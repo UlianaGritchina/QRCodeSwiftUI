@@ -1,13 +1,11 @@
 import SwiftUI
-import CoreImage.CIFilterBuiltins
 
 struct QRCodeSheetView: View {
+    @StateObject var vm = QRCodeSheetViewViewModel()
     let text: String
     @Binding var isShowingQR: Bool
     private let height = UIScreen.main.bounds.height
     private let width = UIScreen.main.bounds.width
-    let context = CIContext()
-    let filter = CIFilter.qrCodeGenerator()
     var body: some View {
         sheet
             .overlay(
@@ -16,12 +14,29 @@ struct QRCodeSheetView: View {
                     shareButton.padding(.leading, width - 80)
                     codeImage
                     Spacer()
-                    saveButton.padding(.bottom, 20)
+                    saveButton.padding(.bottom, 30)
                 }
             )
             .offset(y: isShowingQR ? height / 4.7 : height)
+            .offset(y: vm.currentDragOffsetY)
+            .offset(y: vm.endingOffsetY)
             .ignoresSafeArea()
-            .onTapGesture { withAnimation(.spring()) { isShowingQR.toggle() } }
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        withAnimation(.spring()) {
+                            vm.currentDragOffsetY = value.translation.height
+                        }
+                    }
+                    .onEnded { value in
+                        withAnimation(.spring()) {
+                            if vm.currentDragOffsetY > 10 {
+                                isShowingQR.toggle()
+                            }
+                            vm.currentDragOffsetY = 0
+                        }
+                    }
+            )
     }
 }
 
@@ -70,30 +85,13 @@ extension QRCodeSheetView {
     }
     
     private var codeImage: some View {
-        Image(uiImage: generateQRCode(from: text))
+        Image(uiImage: vm.generateQRCode(from: text))
             .interpolation(.none)
             .resizable()
             .scaledToFit()
             .frame(width: 200, height: 200)
             .cornerRadius(5)
             .shadow(radius: 5)
-    }
-    
-}
-
-
-//MARK: METHODES
-
-extension QRCodeSheetView {
-    
-    func generateQRCode(from string: String) -> UIImage {
-        filter.message = Data(string.utf8)
-        if let outputImage = filter.outputImage {
-            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                return UIImage(cgImage: cgimg)
-            }
-        }
-        return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
     
 }
