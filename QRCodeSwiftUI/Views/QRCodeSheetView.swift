@@ -1,11 +1,5 @@
-//
-//  QRCodeSheetView.swift
-//  QRCodeSwiftUI
-//
-//  Created by Ульяна Гритчина on 09.09.2022.
-//
-
 import SwiftUI
+import CoreImage.CIFilterBuiltins
 
 struct QRCodeSheetView: View {
     let text: String
@@ -25,7 +19,7 @@ struct QRCodeSheetView: View {
                     saveButton.padding(.bottom, 20)
                 }
             )
-            .offset(y: isShowingQR ? height / 3.7 : height)
+            .offset(y: isShowingQR ? height / 4.7 : height)
             .ignoresSafeArea()
             .onTapGesture { withAnimation(.spring()) { isShowingQR.toggle() } }
     }
