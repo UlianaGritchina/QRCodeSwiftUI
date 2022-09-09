@@ -11,11 +11,11 @@ struct MainView: View {
                     Text("Link, email, some text")
                         .font(.headline)
                         .foregroundColor(.gray)
-                    VStack(spacing: height / 2.9) {
+                    VStack(spacing: height / 2.7) {
                         textEditor
                         generateButton
                     }
-                    .padding()
+                    .padding(.horizontal)
                 }
                 
                 blackView
@@ -25,13 +25,9 @@ struct MainView: View {
             .navigationTitle("QR")
             
             .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    doneButtonForToolBar
-                }
-            }
-            
-            .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {restButton}
+                ToolbarItemGroup(placement: .navigationBarTrailing) {savedQrsButton}
+                ToolbarItemGroup(placement: .keyboard) { doneButtonForToolBar }
             }
             
         }
@@ -40,7 +36,13 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        Group {
+            MainView()
+                .preferredColorScheme(.light)
+            MainView()
+                .preferredColorScheme(.dark)
+            
+        }
     }
 }
 
@@ -56,7 +58,7 @@ extension MainView {
             .frame(width: UIScreen.main.bounds.width - 40,
                    height: UIScreen.main.bounds.height / 3)
             .cornerRadius(10)
-            .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 0)
+            .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
     }
     
     private var generateButton: some View {
@@ -66,10 +68,11 @@ extension MainView {
             Text("Generate")
                 .font(.headline)
                 .frame(width: UIScreen.main.bounds.width - 80,
-                       height: 45)
-                .foregroundColor(.white)
-                .background(Color.blue)
+                       height: 50)
+                .foregroundColor(Color("text"))
+                .background(Color("Button"))
                 .cornerRadius(10)
+                .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
         }
     }
     
@@ -89,6 +92,14 @@ extension MainView {
     
     private var restButton: some View {
         Button("Rest") { vm.text = "" }
+    }
+    
+    private var savedQrsButton: some View {
+        Button(action: {}) {
+            NavigationLink(destination: SavedCodesView()) {
+                Image(systemName: "list.bullet")
+            }
+        }
     }
     
 }

@@ -42,7 +42,10 @@ struct QRCodeSheetView: View {
 
 struct QRCodeSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCodeSheetView(text: "", isShowingQR: .constant(true))
+        Group {
+            QRCodeSheetView(text: "", isShowingQR: .constant(true))
+            QRCodeSheetView(text: "", isShowingQR: .constant(true)).preferredColorScheme(.dark)
+        }
     }
 }
 
@@ -55,13 +58,15 @@ extension QRCodeSheetView {
         RoundedRectangle(cornerRadius: 15)
             .frame(width: UIScreen.main.bounds.width,
                    height: UIScreen.main.bounds.height / 2.2)
-            .foregroundColor(.white)
+            .foregroundColor(Color("text"))
+            //.shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
     }
     
     private var grabber: some View {
         RoundedRectangle(cornerRadius: 5)
             .frame(width: 40, height: 5)
-            .opacity(0.2)
+            .opacity(0.5)
+            .foregroundColor(Color("grabber"))
     }
     
     private var shareButton: some View {
@@ -76,10 +81,10 @@ extension QRCodeSheetView {
         Button(action: {}) {
             Text("Save")
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(Color("text"))
                 .frame(width: UIScreen.main.bounds.width - 80,
-                       height: 45)
-                .background(Color.blue)
+                       height: 50)
+                .background(Color("Button"))
                 .cornerRadius(10)
         }
     }
@@ -91,7 +96,7 @@ extension QRCodeSheetView {
             .scaledToFit()
             .frame(width: 200, height: 200)
             .cornerRadius(5)
-            .shadow(radius: 5)
+            .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
     }
     
 }
