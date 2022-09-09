@@ -7,16 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E5C14A328CB46BD0021FB3E /* QRCodeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C14A228CB46BD0021FB3E /* QRCodeSheetView.swift */; };
+		0E5C14A828CB4AFE0021FB3E /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C14A728CB4AFE0021FB3E /* UIApplication+Extension.swift */; };
+		0E77314F28CB4FB800B10086 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77314E28CB4FB800B10086 /* MainViewViewModel.swift */; };
+		0E77315228CB547A00B10086 /* QRCodeSheetViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77315128CB547A00B10086 /* QRCodeSheetViewViewModel.swift */; };
 		0E8732EF28C8AE2D00645115 /* QRCodeSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8732EE28C8AE2D00645115 /* QRCodeSwiftUIApp.swift */; };
-		0E8732F128C8AE2D00645115 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8732F028C8AE2D00645115 /* ContentView.swift */; };
+		0E8732F128C8AE2D00645115 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8732F028C8AE2D00645115 /* MainView.swift */; };
 		0E8732F328C8AE3100645115 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8732F228C8AE3100645115 /* Assets.xcassets */; };
 		0E8732F628C8AE3100645115 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8732F528C8AE3100645115 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E5C14A228CB46BD0021FB3E /* QRCodeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSheetView.swift; sourceTree = "<group>"; };
+		0E5C14A728CB4AFE0021FB3E /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		0E77314E28CB4FB800B10086 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
+		0E77315128CB547A00B10086 /* QRCodeSheetViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSheetViewViewModel.swift; sourceTree = "<group>"; };
 		0E8732EB28C8AE2D00645115 /* QRCodeSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8732EE28C8AE2D00645115 /* QRCodeSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSwiftUIApp.swift; sourceTree = "<group>"; };
-		0E8732F028C8AE2D00645115 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0E8732F028C8AE2D00645115 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0E8732F228C8AE3100645115 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E8732F528C8AE3100645115 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,6 +40,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E5C14A428CB485A0021FB3E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0E77314D28CB4F9E00B10086 /* MainView */,
+				0E77315028CB50AD00B10086 /* QRCodeSheetView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0E5C14A528CB48780021FB3E /* More */ = {
+			isa = PBXGroup;
+			children = (
+				0E8732EE28C8AE2D00645115 /* QRCodeSwiftUIApp.swift */,
+				0E8732F428C8AE3100645115 /* Preview Content */,
+				0E8732F228C8AE3100645115 /* Assets.xcassets */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		0E5C14A628CB4AE50021FB3E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0E5C14A728CB4AFE0021FB3E /* UIApplication+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0E77314D28CB4F9E00B10086 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				0E77314E28CB4FB800B10086 /* MainViewViewModel.swift */,
+				0E8732F028C8AE2D00645115 /* MainView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		0E77315028CB50AD00B10086 /* QRCodeSheetView */ = {
+			isa = PBXGroup;
+			children = (
+				0E77315128CB547A00B10086 /* QRCodeSheetViewViewModel.swift */,
+				0E5C14A228CB46BD0021FB3E /* QRCodeSheetView.swift */,
+			);
+			path = QRCodeSheetView;
+			sourceTree = "<group>";
+		};
 		0E8732E228C8AE2C00645115 = {
 			isa = PBXGroup;
 			children = (
@@ -51,10 +104,9 @@
 		0E8732ED28C8AE2D00645115 /* QRCodeSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				0E8732EE28C8AE2D00645115 /* QRCodeSwiftUIApp.swift */,
-				0E8732F028C8AE2D00645115 /* ContentView.swift */,
-				0E8732F228C8AE3100645115 /* Assets.xcassets */,
-				0E8732F428C8AE3100645115 /* Preview Content */,
+				0E5C14A528CB48780021FB3E /* More */,
+				0E5C14A628CB4AE50021FB3E /* Extensions */,
+				0E5C14A428CB485A0021FB3E /* Views */,
 			);
 			path = QRCodeSwiftUI;
 			sourceTree = "<group>";
@@ -137,8 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E8732F128C8AE2D00645115 /* ContentView.swift in Sources */,
+				0E8732F128C8AE2D00645115 /* MainView.swift in Sources */,
 				0E8732EF28C8AE2D00645115 /* QRCodeSwiftUIApp.swift in Sources */,
+				0E5C14A828CB4AFE0021FB3E /* UIApplication+Extension.swift in Sources */,
+				0E77315228CB547A00B10086 /* QRCodeSheetViewViewModel.swift in Sources */,
+				0E77314F28CB4FB800B10086 /* MainViewViewModel.swift in Sources */,
+				0E5C14A328CB46BD0021FB3E /* QRCodeSheetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +324,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"QRCodeSwiftUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"QRCodeSwiftUI/More/Preview Content\"";
 				DEVELOPMENT_TEAM = 86SKTK882J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -277,7 +333,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -287,7 +343,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -298,7 +354,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"QRCodeSwiftUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"QRCodeSwiftUI/More/Preview Content\"";
 				DEVELOPMENT_TEAM = 86SKTK882J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -307,7 +363,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,7 +373,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

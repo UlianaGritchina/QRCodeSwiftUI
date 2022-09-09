@@ -23,6 +23,17 @@ struct MainView: View {
                 
             }
             .navigationTitle("QR")
+            
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    doneButtonForToolBar
+                }
+            }
+            
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {restButton}
+            }
+            
         }
     }
 }
@@ -46,7 +57,6 @@ extension MainView {
                    height: UIScreen.main.bounds.height / 3)
             .cornerRadius(10)
             .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 0)
-            .ignoresSafeArea(.keyboard, edges: .all)
     }
     
     private var generateButton: some View {
@@ -68,6 +78,17 @@ extension MainView {
             .ignoresSafeArea()
             .foregroundColor(.black)
             .opacity(vm.isShowingQR ? 0.3 : 0)
+    }
+    
+    private var doneButtonForToolBar: some View {
+        HStack {
+            Spacer()
+            Button("Done") { UIApplication.shared.endEditing() }
+        }
+    }
+    
+    private var restButton: some View {
+        Button("Rest") { vm.text = "" }
     }
     
 }
