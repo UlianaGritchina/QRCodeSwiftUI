@@ -3,6 +3,7 @@ import SwiftUI
 struct QRCodeSheetView: View {
     @StateObject var vm = QRCodeSheetViewViewModel()
     let text: String
+    let color: Color
     @Binding var isShowingQR: Bool
     private let height = UIScreen.main.bounds.height
     private let width = UIScreen.main.bounds.width
@@ -42,7 +43,7 @@ struct QRCodeSheetView: View {
 
 struct QRCodeSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCodeSheetView(text: "", isShowingQR: .constant(true))
+        QRCodeSheetView(text: "", color: .blue, isShowingQR: .constant(true))
     }
 }
 
@@ -86,7 +87,7 @@ extension QRCodeSheetView {
     }
     
     private var codeImage: some View {
-        Image(uiImage: vm.generateQRCode(from: text))
+        Image(uiImage: vm.generateQRCode(from: text, color: UIColor(color)))
             .interpolation(.none)
             .resizable()
             .scaledToFit()

@@ -21,7 +21,9 @@ struct MainView: View {
                 }
                 
                 blackView
-                QRCodeSheetView(text: vm.text, isShowingQR: $vm.isShowingQR)
+                QRCodeSheetView(text: vm.text,
+                                color: vm.qrCodeColor,
+                                isShowingQR: $vm.isShowingQR)
                 
             }
             .navigationTitle("QR")
