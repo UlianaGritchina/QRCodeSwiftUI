@@ -11,9 +11,11 @@ struct MainView: View {
                     Text("Link, email, some text")
                         .font(.headline)
                         .foregroundColor(.gray)
-                    VStack(spacing: height / 2.7) {
+                    VStack() {
                         textEditor
-                        generateButton
+                        ColorPicker("Color", selection: $vm.qrCodeColor)
+                            .padding()
+                        generateButton.padding(.top, height / 3.5)
                     }
                     .padding(.horizontal)
                 }
@@ -23,7 +25,6 @@ struct MainView: View {
                 
             }
             .navigationTitle("QR")
-            
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {restButton}
                 ToolbarItemGroup(placement: .navigationBarTrailing) {savedQrsButton}
@@ -36,13 +37,7 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            MainView()
-                .preferredColorScheme(.light)
-            MainView()
-                .preferredColorScheme(.dark)
-            
-        }
+        MainView()
     }
 }
 

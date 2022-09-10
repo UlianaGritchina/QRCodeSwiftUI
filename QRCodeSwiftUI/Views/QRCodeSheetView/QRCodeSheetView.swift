@@ -42,10 +42,7 @@ struct QRCodeSheetView: View {
 
 struct QRCodeSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            QRCodeSheetView(text: "", isShowingQR: .constant(true))
-            QRCodeSheetView(text: "", isShowingQR: .constant(true)).preferredColorScheme(.dark)
-        }
+        QRCodeSheetView(text: "", isShowingQR: .constant(true))
     }
 }
 
@@ -59,7 +56,6 @@ extension QRCodeSheetView {
             .frame(width: UIScreen.main.bounds.width,
                    height: UIScreen.main.bounds.height / 2.2)
             .foregroundColor(Color("text"))
-            //.shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
     }
     
     private var grabber: some View {
