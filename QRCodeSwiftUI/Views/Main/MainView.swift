@@ -5,34 +5,31 @@ struct MainView: View {
     private let height = UIScreen.main.bounds.height
     private let width = UIScreen.main.bounds.width
     var body: some View {
-        NavigationView {
-            ZStack {
-                ScrollView(showsIndicators: false) {
-                    Text("Link, email, some text")
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                    VStack() {
-                        textEditor
-                        ColorPicker("Color", selection: $vm.qrCodeColor)
-                            .padding()
-                        generateButton.padding(.top, height / 3.5)
-                    }
-                    .padding(.horizontal)
+        ZStack {
+            ScrollView(showsIndicators: false) {
+                Text("Link, email, some text")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                VStack() {
+                    textEditor
+                    ColorPicker("Color", selection: $vm.qrCodeColor)
+                        .padding()
+                    generateButton.padding(.top, height / 3.5)
                 }
-                
-                blackView
-                QRCodeSheetView(text: vm.text,
-                                color: vm.qrCodeColor,
-                                isShowingQR: $vm.isShowingQR)
-                
-            }
-            .navigationTitle("QR")
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarLeading) {restButton}
-                ToolbarItemGroup(placement: .navigationBarTrailing) {savedQrsButton}
-                ToolbarItemGroup(placement: .keyboard) { doneButtonForToolBar }
+                .padding(.horizontal)
             }
             
+            blackView
+            QRCodeSheetView(text: vm.text,
+                            color: vm.qrCodeColor,
+                            isShowingQR: $vm.isShowingQR)
+            
+        }
+        .navigationTitle("QR")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) { restButton }
+            ToolbarItemGroup(placement: .navigationBarTrailing) {savedQrsButton}
+            ToolbarItemGroup(placement: .keyboard) { doneButtonForToolBar }
         }
     }
 }
