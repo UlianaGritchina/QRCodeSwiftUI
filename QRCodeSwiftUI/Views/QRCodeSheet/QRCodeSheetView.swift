@@ -41,7 +41,17 @@ struct QRCodeSheetView: View {
                         }
                     }
             )
+            .alert(isPresented: $isShowingAlert, content: {
+                getAlert()
+            })
         
+    }
+    
+    func getAlert() -> Alert {
+        return Alert(
+            title: Text("alertTitle"),
+            message: Text("alertMessage"),
+            dismissButton: .default(Text("Save")))
     }
 }
 
@@ -79,7 +89,10 @@ extension QRCodeSheetView {
     }
     
     private var saveButton: some View {
-        Button(action: {}) {
+        Button(action: {
+            guard let data = vm.generateQRCode(from: text, color: UIColor(color)).pngData() else { return }
+            savedCodesViewModel.addQR(name: "name", text: text, imageData: data)
+        }) {
             Text("Save")
                 .font(.headline)
                 .foregroundColor(Color("text"))
