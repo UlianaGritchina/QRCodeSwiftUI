@@ -3,9 +3,13 @@ import SwiftUI
 
 @main
 struct QRCodeSwiftUIApp: App {
+    @StateObject var listViewModel: SavedCodesViewViewModel = SavedCodesViewViewModel()
     var body: some Scene {
         WindowGroup {
-            MainView()
+            NavigationView {
+                MainView()
+            }
+            .environmentObject(listViewModel)
         }
     }
 }

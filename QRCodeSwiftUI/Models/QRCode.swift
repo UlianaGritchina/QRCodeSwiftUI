@@ -1,8 +1,9 @@
 
 import UIKit
 
-struct QRCode: Hashable {
+struct QRCode: Identifiable, Codable {
+    var id = UUID().uuidString
     let name: String
     let text: String
-    let image: UIImage
+    let imageData: Data
 }

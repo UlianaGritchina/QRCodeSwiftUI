@@ -2,8 +2,11 @@ import SwiftUI
 
 struct QRCodeSheetView: View {
     @StateObject var vm = QRCodeSheetViewViewModel()
+    @EnvironmentObject var savedCodesViewModel: SavedCodesViewViewModel
     let text: String
     let color: Color
+    @State private var isShowingAlert = false
+    @State private var qrCodeName = ""
     @Binding var isShowingQR: Bool
     private let height = UIScreen.main.bounds.height
     private let width = UIScreen.main.bounds.width
@@ -38,6 +41,7 @@ struct QRCodeSheetView: View {
                         }
                     }
             )
+        
     }
 }
 

@@ -8,8 +8,8 @@ class QRCodeSheetViewViewModel: ObservableObject {
     @Published var endingOffsetY: CGFloat = 0
     
     private let noQRCodeImage = UIImage(systemName: "questionmark.square.dashed")
-    let context = CIContext()
-    let filter = CIFilter.qrCodeGenerator()
+    private let context = CIContext()
+    private let filter = CIFilter.qrCodeGenerator()
     
     func generateQRCode(from string: String, color: UIColor) -> UIImage {
         let data = string.data(using: String.Encoding.utf8)
