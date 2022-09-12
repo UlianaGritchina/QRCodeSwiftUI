@@ -21,9 +21,11 @@ class QRCodeSheetViewViewModel: ObservableObject {
             colorFilter.setValue(CIColor(red: 1, green: 1, blue: 1), forKey: "inputColor1") // Background white
             colorFilter.setValue(CIColor(color: color), forKey: "inputColor0") // Foreground or the barcode RED
             guard let outputImage = colorFilter.outputImage else { return noQRCodeImage! }
-            guard let qrCodeImage = context.createCGImage(outputImage, from: outputImage.extent)
-            else { return UIImage() }
-            return UIImage(cgImage: qrCodeImage)
+            //guard let qrCodeImage = context.createCGImage(outputImage, from: outputImage.extent)
+            //else { return UIImage() }
+            let transform = CGAffineTransform(scaleX: 20, y: 20)
+            let scaledCIImage = outputImage.transformed(by: transform)
+            return UIImage(ciImage: scaledCIImage)
         }
         return noQRCodeImage!
     }

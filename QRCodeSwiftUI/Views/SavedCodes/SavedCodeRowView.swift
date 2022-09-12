@@ -6,7 +6,7 @@ struct SavedCodeRowView: View {
     var body: some View {
         VStack {
             NavigationLink {
-                QRCodeDetail(code: code)
+                QRCodeDetailView(code: code)
             } label: {
                 VStack(alignment: .leading) {
                     Text(code.name)
