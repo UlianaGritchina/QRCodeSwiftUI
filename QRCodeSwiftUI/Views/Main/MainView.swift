@@ -14,7 +14,9 @@ struct MainView: View {
                     textEditor
                     ColorPicker("Color", selection: $vm.qrCodeColor)
                         .padding()
-                    generateButton.padding(.top, height / 3.5)
+                    ColorPicker("Backgrund color", selection: $vm.bacgroundColor)
+                        .padding()
+                    generateButton.padding(.top, height / 5)
                 }
                 .padding(.horizontal)
             }
@@ -22,7 +24,7 @@ struct MainView: View {
             blackView
             QRCodeSheetView(text: vm.text,
                             color: vm.qrCodeColor,
-                            isShowingQR: $vm.isShowingQR)
+                            color2: vm.bacgroundColor, isShowingQR: $vm.isShowingQR)
             
         }
         .navigationTitle("QR")
@@ -36,7 +38,9 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        NavigationView {
+            MainView()
+        }
     }
 }
 

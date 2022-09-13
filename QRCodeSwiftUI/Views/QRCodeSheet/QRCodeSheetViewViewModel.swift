@@ -11,15 +11,15 @@ class QRCodeSheetViewViewModel: ObservableObject {
     private let context = CIContext()
     private let filter = CIFilter.qrCodeGenerator()
     
-    func generateQRCode(from string: String, color: UIColor) -> UIImage {
+    func generateQRCode(from string: String, color: UIColor, color2: UIColor) -> UIImage {
         let data = string.data(using: String.Encoding.utf8)
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             guard let colorFilter = CIFilter(name: "CIFalseColor") else { return noQRCodeImage! }
             filter.setValue(data, forKey: "inputMessage")
             filter.setValue("H", forKey: "inputCorrectionLevel")
             colorFilter.setValue(filter.outputImage, forKey: "inputImage")
-            colorFilter.setValue(CIColor(red: 1, green: 1, blue: 1), forKey: "inputColor1") // Background white
-            colorFilter.setValue(CIColor(color: color), forKey: "inputColor0") // Foreground or the barcode RED
+            colorFilter.setValue(CIColor(color: color2), forKey: "inputColor1") // Background
+            colorFilter.setValue(CIColor(color: color), forKey: "inputColor0") // Foreground
             guard let outputImage = colorFilter.outputImage else { return noQRCodeImage! }
             //guard let qrCodeImage = context.createCGImage(outputImage, from: outputImage.extent)
             //else { return UIImage() }

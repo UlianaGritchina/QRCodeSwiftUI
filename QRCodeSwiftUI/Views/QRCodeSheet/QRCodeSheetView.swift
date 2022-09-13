@@ -5,6 +5,7 @@ struct QRCodeSheetView: View {
     @EnvironmentObject var savedCodesViewModel: SavedCodesViewViewModel
     let text: String
     let color: Color
+    let color2: Color
     @State private var isShowingAlert = false
     @State private var qrCodeName = ""
     @State private var name = ""
@@ -19,7 +20,7 @@ struct QRCodeSheetView: View {
                     ShareButtonView(
                         codeImageData: vm.generateQRCode(
                             from: text,
-                            color: UIColor(color)).pngData() ?? Data()
+                            color: UIColor(color), color2: UIColor(color2)).pngData() ?? Data()
                     )
                         .padding(.leading, width - 80)
                     if isShowingAlert { nameTF }
@@ -55,7 +56,7 @@ struct QRCodeSheetView: View {
 
 struct QRCodeSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCodeSheetView(text: "", color: .blue, isShowingQR: .constant(true))
+        QRCodeSheetView(text: "", color: .blue, color2: .white, isShowingQR: .constant(true))
     }
 }
 
@@ -83,7 +84,7 @@ extension QRCodeSheetView {
             
             guard let data = vm.generateQRCode(
                 from: text,
-                color: UIColor(color)).pngData() else { return }
+                color: UIColor(color), color2: UIColor(color2)).pngData() else { return }
             let activityVC = UIActivityViewController(
                 activityItems: [data],
                 applicationActivities: nil
@@ -118,7 +119,7 @@ extension QRCodeSheetView {
     }
     
     private var codeImage: some View {
-        Image(uiImage: UIImage(data: vm.generateQRCode(from: text, color: UIColor(color)).pngData()!)!)
+        Image(uiImage: UIImage(data: vm.generateQRCode(from: text, color: UIColor(color), color2: UIColor(color2)).pngData()!)!)
             .interpolation(.none)
             .resizable()
             .scaledToFit()
@@ -147,7 +148,7 @@ extension QRCodeSheetView {
                 isShowingAlert.toggle()
                 guard let data = vm.generateQRCode(
                     from: text,
-                    color: UIColor(color)
+                    color: UIColor(color), color2: UIColor(color2)
                 ).pngData() else { return }
                 savedCodesViewModel.addQR(name: name,
                                           text: text,
