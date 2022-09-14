@@ -14,17 +14,21 @@ struct MainView: View {
                     textEditor
                     ColorPicker("Color", selection: $vm.qrCodeColor)
                         .padding()
-                    ColorPicker("Backgrund color", selection: $vm.bacgroundColor)
+                    ColorPicker("Background color", selection: $vm.bacgroundColor)
                         .padding()
-                    generateButton.padding(.top, height / 5)
+                    generateButton.padding(.top, UIScreen.main.bounds.height / 5)
                 }
                 .padding(.horizontal)
             }
             
             blackView
-            QRCodeSheetView(text: vm.text,
-                            color: vm.qrCodeColor,
-                            color2: vm.bacgroundColor, isShowingQR: $vm.isShowingQR)
+            QRCodeSheetView(
+                vm: QRCodeSheetViewViewModel(
+                    text: vm.text,
+                    color1: vm.qrCodeColor,
+                    color2: vm.bacgroundColor),
+                isShowingQR: $vm.isShowingQR
+            )
             
         }
         .navigationTitle("QR")
@@ -53,20 +57,16 @@ extension MainView {
         TextEditor(text: $vm.text)
             .font(.headline)
             .multilineTextAlignment(.leading)
-            .frame(width: UIScreen.main.bounds.width - 40,
-                   height: UIScreen.main.bounds.height / 3)
+            .frame(width: width - 40, height: height / 3)
             .cornerRadius(10)
             .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
     }
     
     private var generateButton: some View {
-        Button(action: {withAnimation(.spring()) {
-            vm.isShowingQR.toggle()
-        }}) {
+        Button(action: { withAnimation(.spring()) { vm.showQRCodeView() } }) {
             Text("Generate")
                 .font(.headline)
-                .frame(width: UIScreen.main.bounds.width - 80,
-                       height: 50)
+                .frame(width: width - 80, height: 50)
                 .foregroundColor(Color("text"))
                 .background(Color("Button"))
                 .cornerRadius(10)
@@ -89,14 +89,12 @@ extension MainView {
     }
     
     private var restButton: some View {
-        Button("Rest") { vm.text = "" }
+        Button("Rest") { vm.rest() }
     }
     
     private var savedQrsButton: some View {
-        Button(action: {}) {
-            NavigationLink(destination: SavedCodesView()) {
-                Image(systemName: "list.bullet")
-            }
+        NavigationLink(destination: SavedCodesView()) {
+            Image(systemName: "list.bullet")
         }
     }
     
