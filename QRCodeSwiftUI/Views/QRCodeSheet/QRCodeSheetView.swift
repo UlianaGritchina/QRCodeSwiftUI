@@ -1,14 +1,8 @@
 import SwiftUI
 
 struct QRCodeSheetView: View {
-    @StateObject var vm = QRCodeSheetViewViewModel()
     @EnvironmentObject var savedCodesViewModel: SavedCodesViewViewModel
-    let text: String
-    let color: Color
-    let color2: Color
-    @State private var isShowingAlert = false
-    @State private var qrCodeName = ""
-    @State private var name = ""
+    @ObservedObject var vm: QRCodeSheetViewViewModel
     @Binding var isShowingQR: Bool
     private let height = UIScreen.main.bounds.height
     private let width = UIScreen.main.bounds.width
@@ -17,13 +11,9 @@ struct QRCodeSheetView: View {
             .overlay(
                 VStack() {
                     grabber.padding(.top)
-                    ShareButtonView(
-                        codeImageData: vm.generateQRCode(
-                            from: text,
-                            color: UIColor(color), color2: UIColor(color2)).pngData() ?? Data()
-                    )
+                    ShareButtonView(codeImageData: vm.qrImageData)
                         .padding(.leading, width - 80)
-                    if isShowingAlert { nameTF }
+                    if vm.isGoingToSave { nameTF }
                     codeImage
                     Spacer()
                     saveButton.padding(.bottom, 30)
@@ -56,7 +46,14 @@ struct QRCodeSheetView: View {
 
 struct QRCodeSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCodeSheetView(text: "", color: .blue, color2: .white, isShowingQR: .constant(true))
+        QRCodeSheetView(
+            vm: QRCodeSheetViewViewModel(
+                text: "text",
+                color1: .black,
+                color2: .white
+            ),
+            isShowingQR: .constant(true)
+        )
     }
 }
 
@@ -81,12 +78,8 @@ extension QRCodeSheetView {
     
     private var shareButton: some View {
         Button(action: {
-            
-            guard let data = vm.generateQRCode(
-                from: text,
-                color: UIColor(color), color2: UIColor(color2)).pngData() else { return }
             let activityVC = UIActivityViewController(
-                activityItems: [data],
+                activityItems: [vm.qrImageData],
                 applicationActivities: nil
             )
             UIApplication
@@ -111,15 +104,14 @@ extension QRCodeSheetView {
             Text("Save")
                 .font(.headline)
                 .foregroundColor(Color("text"))
-                .frame(width: UIScreen.main.bounds.width - 80,
-                       height: 50)
+                .frame(width: width - 80,  height: 50)
                 .background(Color("Button"))
                 .cornerRadius(10)
         }
     }
     
     private var codeImage: some View {
-        Image(uiImage: UIImage(data: vm.generateQRCode(from: text, color: UIColor(color), color2: UIColor(color2)).pngData()!)!)
+        Image(uiImage: UIImage(data: vm.qrImageData)!)
             .interpolation(.none)
             .resizable()
             .scaledToFit()
@@ -129,7 +121,7 @@ extension QRCodeSheetView {
     }
     
     private var nameTF: some View {
-        TextField("Give a name", text: $name)
+        TextField("Give a name", text: $vm.name)
             .font(.headline)
             .multilineTextAlignment(.center)
     }
@@ -143,22 +135,18 @@ extension QRCodeSheetView {
     
     private func saveQR() {
         withAnimation {
-            isShowingAlert.toggle()
-            if !isShowingAlert {
-                isShowingAlert.toggle()
-                guard let data = vm.generateQRCode(
-                    from: text,
-                    color: UIColor(color), color2: UIColor(color2)
-                ).pngData() else { return }
-                savedCodesViewModel.addQR(name: name,
-                                          text: text,
-                                          imageData: data)
+            vm.isGoingToSave.toggle()
+            if !vm.isGoingToSave {
+                vm.isGoingToSave.toggle()
+                savedCodesViewModel.addQR(name: vm.name,
+                                          text: vm.text,
+                                          imageData: vm.qrImageData)
                 isShowingQR.toggle()
-                name = ""
+                vm.name = ""
             }
         }
         
-        if !isShowingQR { isShowingAlert.toggle() }
+        if !isShowingQR { vm.isGoingToSave.toggle() }
     }
     
 }
