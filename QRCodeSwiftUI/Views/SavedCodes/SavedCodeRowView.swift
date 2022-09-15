@@ -9,20 +9,10 @@ struct SavedCodeRowView: View {
                 QRCodeDetailView(code: code)
             } label: {
                 VStack(alignment: .leading) {
-                    Text(code.name)
-                        .padding(.top)
-                        .font(.headline)
+                    qrCodeName
                     HStack() {
-                        Image(uiImage: UIImage(data: code.imageData)!)
-                            .interpolation(.none)
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(5)
-                            .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
-                        Text(code.text)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                            .frame(maxHeight: 90)
+                        qrCodeImage
+                        qrCodeData
                     }
                 }
             }
@@ -36,4 +26,30 @@ struct SavedCodeRowView_Previews: PreviewProvider {
                                       text: "text",
                                       imageData: Data()))
     }
+}
+
+extension SavedCodeRowView {
+    
+    private var qrCodeName: some View {
+        Text(code.name)
+            .padding(.top)
+            .font(.headline)
+    }
+    
+    private var qrCodeImage: some View {
+        Image(uiImage: UIImage(data: code.imageData)!)
+            .interpolation(.none)
+            .resizable()
+            .frame(width: 100, height: 100)
+            .cornerRadius(5)
+            .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
+    }
+    
+    private var qrCodeData: some View {
+        Text(code.text)
+            .font(.subheadline)
+            .foregroundColor(.gray)
+            .frame(maxHeight: 90)
+    }
+    
 }

@@ -2,12 +2,11 @@ import SwiftUI
 
 struct ShareButtonView: View {
     let codeImageData: Data
+    let imageSize: CGFloat
     var body: some View {
-        Button(action: {
-            showShareView()
-        }) {
+        Button(action: { showShareView() }) {
             Image(systemName: "square.and.arrow.up")
-                .font(.system(size: UIScreen.main.bounds.height / 35))
+                .font(.system(size: imageSize))
                 .frame(alignment: .topTrailing)
         }
     }
@@ -17,13 +16,15 @@ struct ShareButtonView: View {
             activityItems: [codeImageData],
             applicationActivities: nil
         )
-        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(
+            activityVC, animated: true, completion: nil
+        )
     }
     
 }
 
 struct ShareButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ShareButtonView(codeImageData: Data())
+        ShareButtonView(codeImageData: Data(), imageSize: 30)
     }
 }

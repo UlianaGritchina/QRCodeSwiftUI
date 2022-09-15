@@ -12,15 +12,9 @@ struct QRCodeDetailView: View {
         }
         .navigationTitle(code.name)
         .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) { shareButton }
-        }
-    }
-    
-    private var shareButton: some View {
-        Button(action: {
-            showShareView()
-        }) {
-            Image(systemName: "square.and.arrow.up")
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                ShareButtonView(codeImageData: code.imageData,imageSize: 20)
+            }
         }
     }
     
@@ -39,7 +33,9 @@ struct QRCodeDetailView: View {
             activityItems: [code.imageData],
             applicationActivities: nil
         )
-        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(
+            activityVC, animated: true, completion: nil
+        )
     }
     
 }

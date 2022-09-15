@@ -4,42 +4,79 @@ struct QRCodeSheetView: View {
     @EnvironmentObject var savedCodesViewModel: SavedCodesViewViewModel
     @ObservedObject var vm: QRCodeSheetViewViewModel
     @Binding var isShowingQR: Bool
+    @State private var op: Double = 0
     private let height = UIScreen.main.bounds.height
     private let width = UIScreen.main.bounds.width
     var body: some View {
-        sheet
-            .overlay(
-                VStack() {
-                    grabber.padding(.top)
-                    ShareButtonView(codeImageData: vm.qrImageData)
-                        .padding(.leading, width - 80)
-                    if vm.isGoingToSave { nameTF }
-                    codeImage
-                    Spacer()
-                    saveButton.padding(.bottom, 30)
-                    
-                }
-            )
+        
+        RoundedRectangle(cornerRadius: 15)
+            .frame(width: width, height: height / 2.2)
             .offset(y: isShowingQR ? height / 4.7 : height)
-            .offset(y: vm.currentDragOffsetY)
-            .offset(y: vm.endingOffsetY)
-            .ignoresSafeArea()
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        withAnimation(.spring()) {
-                            vm.currentDragOffsetY = value.translation.height
-                        }
+            .opacity(op)
+            .overlay(
+                
+                ZStack {
+                    
+                    VStack {
+                        Spacer()
+                        Text("Hello Friend")
+                            .foregroundColor(Color("text"))
+                            .font(.system(size: height / 30))
+                            .opacity(op)
+                        
                     }
-                    .onEnded { value in
-                        withAnimation(.spring()) {
-                            if vm.currentDragOffsetY > 10 {
-                                isShowingQR.toggle()
+                    sheet
+                        .overlay(
+                            VStack() {
+                                grabber.padding(.top)
+                                ShareButtonView(
+                                    codeImageData: vm.qrImageData,
+                                    imageSize: height / 30
+                                )
+                                    .padding(.leading, width - 80)
+                                if vm.isGoingToSave { nameTF }
+                                codeImage
+                                Spacer()
+                                saveButton.padding(.bottom, 30)
+                                
                             }
-                            vm.currentDragOffsetY = 0
-                        }
-                    }
+                        )
+                        .offset(y: isShowingQR ? height / 4.7 : height)
+                        .offset(y: vm.currentDragOffsetY)
+                        .offset(y: vm.endingOffsetY)
+                        .ignoresSafeArea()
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    withAnimation(.spring()) {
+                                        vm.currentDragOffsetY = value.translation.height
+                                        if vm.currentDragOffsetY < 0 {
+                                            op = 1
+                                        }
+                                        if vm.currentDragOffsetY >= 0 {
+                                            op = 0
+                                        }
+                                    }
+                                }
+                                .onEnded { value in
+                                    withAnimation(.spring()) {
+                                        if vm.currentDragOffsetY > 10 {
+                                            isShowingQR.toggle()
+                                            
+                                        }
+                                        
+                                        op = 0
+                                        
+                                        vm.currentDragOffsetY = 0
+                                    }
+                                }
+                        )
+                }
+                
+                
             )
+        
+        
         
     }
 }
@@ -82,15 +119,9 @@ extension QRCodeSheetView {
                 activityItems: [vm.qrImageData],
                 applicationActivities: nil
             )
-            UIApplication
-                .shared
-                .windows
-                .first?
-                .rootViewController?.present(
-                    activityVC,
-                    animated: true,
-                    completion: nil
-                )
+            UIApplication.shared.windows.first?.rootViewController?.present(
+                activityVC, animated: true, completion: nil
+            )
             
         }) {
             Image(systemName: "square.and.arrow.up")

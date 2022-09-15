@@ -37,7 +37,7 @@ class SavedCodesViewViewModel: ObservableObject {
             let data = UserDefaults.standard.data(forKey: itemsKey),
             let savedCodes = try? JSONDecoder().decode([QRCode].self, from: data)
         else { return }
-
+        
         codes = savedCodes
     }
     
