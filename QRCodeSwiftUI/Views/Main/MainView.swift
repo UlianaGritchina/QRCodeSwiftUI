@@ -12,11 +12,11 @@ struct MainView: View {
                     .foregroundColor(.gray)
                 VStack() {
                     textEditor
-                    ColorPicker("Color", selection: $vm.qrCodeColor)
-                        .padding()
-                    ColorPicker("Background color", selection: $vm.bacgroundColor)
-                        .padding()
-                    generateButton.padding(.top, UIScreen.main.bounds.height / 5)
+                    ColorPicker("Color",
+                                selection: $vm.qrCodeColor).padding()
+                    ColorPicker("Background color",
+                                selection: $vm.backgroundColor).padding()
+                    generateButton.padding(.top, height / 5)
                 }
                 .padding(.horizontal)
             }
@@ -26,7 +26,7 @@ struct MainView: View {
                 vm: QRCodeSheetViewViewModel(
                     text: vm.text,
                     color1: vm.qrCodeColor,
-                    color2: vm.bacgroundColor),
+                    color2: vm.backgroundColor),
                 isShowingQR: $vm.isShowingQR
             )
             
