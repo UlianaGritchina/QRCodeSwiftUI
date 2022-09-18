@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var vm = MainViewViewModel()
+    @StateObject var vm = MainViewModel()
     private let height = UIScreen.main.bounds.height
     private let width = UIScreen.main.bounds.width
     var body: some View {
@@ -23,7 +23,7 @@ struct MainView: View {
             
             blackView
             QRCodeSheetView(
-                vm: QRCodeSheetViewViewModel(
+                vm: QRCodeSheetViewModel(
                     text: vm.text,
                     color1: vm.qrCodeColor,
                     color2: vm.backgroundColor),

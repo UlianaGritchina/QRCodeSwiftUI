@@ -28,16 +28,6 @@ struct QRCodeDetailView: View {
             .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
     }
     
-    private func showShareView() {
-        let activityVC = UIActivityViewController(
-            activityItems: [code.imageData],
-            applicationActivities: nil
-        )
-        UIApplication.shared.windows.first?.rootViewController?.present(
-            activityVC, animated: true, completion: nil
-        )
-    }
-    
 }
 
 struct QRCodeDetailView_Previews: PreviewProvider {

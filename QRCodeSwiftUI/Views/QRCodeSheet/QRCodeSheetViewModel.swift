@@ -1,7 +1,7 @@
 import SwiftUI
 import CoreImage.CIFilterBuiltins
 
-class QRCodeSheetViewViewModel: ObservableObject {
+class QRCodeSheetViewModel: ObservableObject {
     
     @Published var startingOffsetY: CGFloat = 0
     @Published var currentDragOffsetY: CGFloat = 0
@@ -9,6 +9,7 @@ class QRCodeSheetViewViewModel: ObservableObject {
     @Published var name = ""
     @Published var isGoingToSave = false
     @Published var qrImageData: Data = Data()
+    @Published var helloFriendOpacity: Double = 0
     
     var text: String
     var color: Color
@@ -24,7 +25,6 @@ class QRCodeSheetViewViewModel: ObservableObject {
         self.color2 = color2
         generateQRCode()
     }
-    
     
     private func generateQRCode() {
         let foregroundColor = UIColor(color)

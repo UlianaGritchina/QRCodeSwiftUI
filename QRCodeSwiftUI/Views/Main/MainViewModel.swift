@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-class MainViewViewModel: ObservableObject {
+class MainViewModel: ObservableObject {
     
     @Published var text = ""
     @Published var isShowingQR = false

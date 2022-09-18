@@ -16,7 +16,10 @@ struct ShareButtonView: View {
             activityItems: [codeImageData],
             applicationActivities: nil
         )
-        UIApplication.shared.windows.first?.rootViewController?.present(
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        window?.rootViewController?.present(
             activityVC, animated: true, completion: nil
         )
     }

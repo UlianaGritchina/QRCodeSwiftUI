@@ -10,18 +10,17 @@
 		0E3023ED28CF51A300037184 /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3023EC28CF51A300037184 /* ShareButtonView.swift */; };
 		0E5C14A328CB46BD0021FB3E /* QRCodeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C14A228CB46BD0021FB3E /* QRCodeSheetView.swift */; };
 		0E5C14A828CB4AFE0021FB3E /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C14A728CB4AFE0021FB3E /* UIApplication+Extension.swift */; };
-		0E77314F28CB4FB800B10086 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77314E28CB4FB800B10086 /* MainViewViewModel.swift */; };
-		0E77315228CB547A00B10086 /* QRCodeSheetViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77315128CB547A00B10086 /* QRCodeSheetViewViewModel.swift */; };
+		0E77314F28CB4FB800B10086 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77314E28CB4FB800B10086 /* MainViewModel.swift */; };
+		0E77315228CB547A00B10086 /* QRCodeSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77315128CB547A00B10086 /* QRCodeSheetViewModel.swift */; };
 		0E77315428CB5B9200B10086 /* SavedCodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77315328CB5B9200B10086 /* SavedCodesView.swift */; };
 		0E7D54D228CCB5F200F511A4 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D54D128CCB5F200F511A4 /* QRCode.swift */; };
 		0E7D54D428CCD67800F511A4 /* SavedCodeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D54D328CCD67800F511A4 /* SavedCodeRowView.swift */; };
 		0E7D54D628CCF32400F511A4 /* SavedCodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D54D528CCF32400F511A4 /* SavedCodesViewModel.swift */; };
-		0E7D54D828CCF36C00F511A4 /* QRCodeDitailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D54D728CCF36C00F511A4 /* QRCodeDitailView.swift */; };
+		0E7D54D828CCF36C00F511A4 /* QRCodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D54D728CCF36C00F511A4 /* QRCodeDetailView.swift */; };
 		0E8732EF28C8AE2D00645115 /* QRCodeSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8732EE28C8AE2D00645115 /* QRCodeSwiftUIApp.swift */; };
 		0E8732F128C8AE2D00645115 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8732F028C8AE2D00645115 /* MainView.swift */; };
 		0E8732F328C8AE3100645115 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8732F228C8AE3100645115 /* Assets.xcassets */; };
 		0E8732F628C8AE3100645115 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8732F528C8AE3100645115 /* Preview Assets.xcassets */; };
-		0EC9382328D490C600833E22 /* MyBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9382228D490C600833E22 /* MyBirthdayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,19 +28,18 @@
 		0E3023EC28CF51A300037184 /* ShareButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
 		0E5C14A228CB46BD0021FB3E /* QRCodeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSheetView.swift; sourceTree = "<group>"; };
 		0E5C14A728CB4AFE0021FB3E /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
-		0E77314E28CB4FB800B10086 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
-		0E77315128CB547A00B10086 /* QRCodeSheetViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSheetViewViewModel.swift; sourceTree = "<group>"; };
+		0E77314E28CB4FB800B10086 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		0E77315128CB547A00B10086 /* QRCodeSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSheetViewModel.swift; sourceTree = "<group>"; };
 		0E77315328CB5B9200B10086 /* SavedCodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCodesView.swift; sourceTree = "<group>"; };
 		0E7D54D128CCB5F200F511A4 /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		0E7D54D328CCD67800F511A4 /* SavedCodeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCodeRowView.swift; sourceTree = "<group>"; };
 		0E7D54D528CCF32400F511A4 /* SavedCodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCodesViewModel.swift; sourceTree = "<group>"; };
-		0E7D54D728CCF36C00F511A4 /* QRCodeDitailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDitailView.swift; sourceTree = "<group>"; };
+		0E7D54D728CCF36C00F511A4 /* QRCodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDetailView.swift; sourceTree = "<group>"; };
 		0E8732EB28C8AE2D00645115 /* QR Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QR Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8732EE28C8AE2D00645115 /* QRCodeSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSwiftUIApp.swift; sourceTree = "<group>"; };
 		0E8732F028C8AE2D00645115 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0E8732F228C8AE3100645115 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E8732F528C8AE3100645115 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0EC9382228D490C600833E22 /* MyBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBirthdayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +56,7 @@
 		0E05638A28D1E9EB005C9476 /* QRCodeDitail */ = {
 			isa = PBXGroup;
 			children = (
-				0E7D54D728CCF36C00F511A4 /* QRCodeDitailView.swift */,
+				0E7D54D728CCF36C00F511A4 /* QRCodeDetailView.swift */,
 			);
 			path = QRCodeDitail;
 			sourceTree = "<group>";
@@ -96,7 +94,7 @@
 		0E77314D28CB4F9E00B10086 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				0E77314E28CB4FB800B10086 /* MainViewViewModel.swift */,
+				0E77314E28CB4FB800B10086 /* MainViewModel.swift */,
 				0E8732F028C8AE2D00645115 /* MainView.swift */,
 			);
 			path = Main;
@@ -105,7 +103,7 @@
 		0E77315028CB50AD00B10086 /* QRCodeSheet */ = {
 			isa = PBXGroup;
 			children = (
-				0E77315128CB547A00B10086 /* QRCodeSheetViewViewModel.swift */,
+				0E77315128CB547A00B10086 /* QRCodeSheetViewModel.swift */,
 				0E5C14A228CB46BD0021FB3E /* QRCodeSheetView.swift */,
 			);
 			path = QRCodeSheet;
@@ -116,7 +114,7 @@
 			children = (
 				0E7D54D528CCF32400F511A4 /* SavedCodesViewModel.swift */,
 				0E77315328CB5B9200B10086 /* SavedCodesView.swift */,
-				0E7D54D328CCD67800F511A4 /* SavedCodeRowView.swift */,
+				0EAC4F9128D729EA004EC602 /* SavedCodesRow */,
 			);
 			path = SavedCodes;
 			sourceTree = "<group>";
@@ -133,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				0E3023EC28CF51A300037184 /* ShareButtonView.swift */,
-				0EC9382228D490C600833E22 /* MyBirthdayView.swift */,
 			);
 			path = "Global Elements";
 			sourceTree = "<group>";
@@ -174,6 +171,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		0EAC4F9128D729EA004EC602 /* SavedCodesRow */ = {
+			isa = PBXGroup;
+			children = (
+				0E7D54D328CCD67800F511A4 /* SavedCodeRowView.swift */,
+			);
+			path = SavedCodesRow;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,6 +195,8 @@
 			dependencies = (
 			);
 			name = QRCodeSwiftUI;
+			packageProductDependencies = (
+			);
 			productName = QRCodeSwiftUI;
 			productReference = 0E8732EB28C8AE2D00645115 /* QR Generator.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +225,8 @@
 				Base,
 			);
 			mainGroup = 0E8732E228C8AE2C00645115;
+			packageReferences = (
+			);
 			productRefGroup = 0E8732EC28C8AE2D00645115 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -247,16 +256,15 @@
 				0E8732F128C8AE2D00645115 /* MainView.swift in Sources */,
 				0E8732EF28C8AE2D00645115 /* QRCodeSwiftUIApp.swift in Sources */,
 				0E5C14A828CB4AFE0021FB3E /* UIApplication+Extension.swift in Sources */,
-				0E7D54D828CCF36C00F511A4 /* QRCodeDitailView.swift in Sources */,
+				0E7D54D828CCF36C00F511A4 /* QRCodeDetailView.swift in Sources */,
 				0E7D54D428CCD67800F511A4 /* SavedCodeRowView.swift in Sources */,
-				0E77315228CB547A00B10086 /* QRCodeSheetViewViewModel.swift in Sources */,
+				0E77315228CB547A00B10086 /* QRCodeSheetViewModel.swift in Sources */,
 				0E3023ED28CF51A300037184 /* ShareButtonView.swift in Sources */,
-				0E77314F28CB4FB800B10086 /* MainViewViewModel.swift in Sources */,
+				0E77314F28CB4FB800B10086 /* MainViewModel.swift in Sources */,
 				0E7D54D228CCB5F200F511A4 /* QRCode.swift in Sources */,
 				0E7D54D628CCF32400F511A4 /* SavedCodesViewModel.swift in Sources */,
 				0E5C14A328CB46BD0021FB3E /* QRCodeSheetView.swift in Sources */,
 				0E77315428CB5B9200B10086 /* SavedCodesView.swift in Sources */,
-				0EC9382328D490C600833E22 /* MyBirthdayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +399,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCodeSwiftUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "My QR";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -422,6 +431,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCodeSwiftUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "My QR";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
