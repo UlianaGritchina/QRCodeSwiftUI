@@ -10,6 +10,7 @@ struct QRCodeSwiftUIApp: App {
                 MainView()
             }
             .environmentObject(listViewModel)
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

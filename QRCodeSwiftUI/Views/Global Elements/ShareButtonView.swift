@@ -19,6 +19,9 @@ struct ShareButtonView: View {
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
         let window = windowScene?.windows.first
+        let vc = window?.rootViewController
+        activityVC.popoverPresentationController?.sourceView = vc?.view
+        activityVC.popoverPresentationController?.sourceRect = .zero
         window?.rootViewController?.present(
             activityVC, animated: true, completion: nil
         )
