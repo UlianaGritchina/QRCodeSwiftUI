@@ -82,10 +82,8 @@ extension MainView {
     }
     
     private var doneButtonForToolBar: some View {
-        HStack {
-            Spacer()
-            Button("Done") { UIApplication.shared.endEditing() }
-        }
+        Button("Done") { UIApplication.shared.endEditing() }
+            .padding(.leading, width - 80)
     }
     
     private var restButton: some View {
