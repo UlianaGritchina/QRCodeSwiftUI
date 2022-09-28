@@ -101,13 +101,7 @@ extension QRCodeSheetView {
     }
     
     private var codeImage: some View {
-        Image(uiImage: UIImage(data: vm.qrImageData)!)
-            .interpolation(.none)
-            .resizable()
-            .scaledToFit()
-            .frame(width: 200, height: 200)
-            .cornerRadius(5)
-            .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
+        QrView(data: vm.qrImageData)
     }
     
     private var nameTF: some View {

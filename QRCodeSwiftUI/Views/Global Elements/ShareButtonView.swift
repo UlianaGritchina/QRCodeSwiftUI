@@ -4,10 +4,19 @@ struct ShareButtonView: View {
     let codeImageData: Data
     let imageSize: CGFloat
     var body: some View {
-        Button(action: { showShareView() }) {
-            Image(systemName: "square.and.arrow.up")
-                .font(.system(size: imageSize))
-                .frame(alignment: .topTrailing)
+        if #available(iOS 16.0, *) {
+            ShareLink(
+                item: Image(uiImage: UIImage(data: codeImageData)!),
+                preview: SharePreview(
+                    "QR-code",
+                    image: Image(uiImage: UIImage(data: codeImageData)!))) {
+                        Image(systemName: "square.and.arrow.up").font(.system(size: imageSize))
+                    }
+        } else {
+            Button(action: { showShareView() }) {
+                Image(systemName: "square.and.arrow.up")
+                    .font(.system(size: imageSize))
+            }
         }
     }
     
