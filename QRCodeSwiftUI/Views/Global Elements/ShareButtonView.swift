@@ -10,7 +10,8 @@ struct ShareButtonView: View {
                 preview: SharePreview(
                     "QR-code",
                     image: Image(uiImage: UIImage(data: codeImageData)!))) {
-                        Image(systemName: "square.and.arrow.up").font(.system(size: imageSize))
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: imageSize))
                     }
         } else {
             Button(action: { showShareView() }) {
