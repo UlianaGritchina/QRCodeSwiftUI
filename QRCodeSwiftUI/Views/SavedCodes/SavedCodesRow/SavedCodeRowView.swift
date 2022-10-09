@@ -42,7 +42,7 @@ extension SavedCodeRowView {
             .resizable()
             .frame(width: 100, height: 100)
             .cornerRadius(5)
-            .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
+            .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
     }
     
     private var qrCodeData: some View {

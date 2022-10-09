@@ -36,7 +36,7 @@ extension QRCodeSheetView {
     private var sheet: some View {
         RoundedRectangle(cornerRadius: 15)
             .frame(width: width, height: height / 2.2)
-            .foregroundColor(Color("text"))
+            .foregroundColor(Color("sheet"))
             .overlay(qrCodeContent)
             .offset(y: isShowingQR ? height / 4.7 : height)
             .offset(y: vm.currentDragOffsetY)

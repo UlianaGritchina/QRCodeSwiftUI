@@ -25,7 +25,7 @@ struct QRCodeDetailView: View {
             .frame(width: UIScreen.main.bounds.width - 80,
                    height: UIScreen.main.bounds.width - 80)
             .cornerRadius(5)
-            .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
+            .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
     }
     
 }

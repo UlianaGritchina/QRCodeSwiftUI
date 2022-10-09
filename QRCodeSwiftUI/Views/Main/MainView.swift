@@ -96,7 +96,7 @@ extension MainView {
                 .foregroundColor(Color("text"))
                 .background(Color("Button"))
                 .cornerRadius(10)
-                .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
+                .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
         }
     }
     
@@ -140,7 +140,7 @@ extension MainView {
                     Circle()
                         .frame(width: width / 7)
                         .foregroundColor(.white)
-                        .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
+                        .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
                         .blur(radius: 0.5)
                         .overlay {
                             Image(vm.selectedEye)
@@ -162,7 +162,7 @@ extension MainView {
                     Circle()
                         .frame(width: width / 7)
                         .foregroundColor(.white)
-                        .shadow(color: Color("Color"), radius: 5, x: 0, y: 0)
+                        .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
                         .blur(radius: 0.5)
                         .overlay {
                             Image(vm.selectedData)
@@ -180,7 +180,7 @@ extension MainView {
             Spacer()
             RoundedRectangle(cornerRadius: 10)
                 .frame(width: width, height: height / 3)
-                .foregroundColor(.white)
+                .foregroundColor(Color("sheet"))
                 .overlay {
                     VStack {
                         Text("Eye")
@@ -197,7 +197,7 @@ extension MainView {
                                     Circle()
                                         .frame(width: width / 7)
                                         .foregroundColor(.white)
-                                        .shadow(color: Color("Color"),
+                                        .shadow(color: .black.opacity(0.4),
                                                 radius: 5, x: 0, y: 0)
                                         .blur(radius: 0.5)
                                         .overlay {
@@ -221,7 +221,7 @@ extension MainView {
                                     Circle()
                                         .frame(width: width / 7)
                                         .foregroundColor(.white)
-                                        .shadow(color: Color("Color"),
+                                        .shadow(color: .black.opacity(0.4),
                                                 radius: 5, x: 0, y: 0)
                                         .blur(radius: 0.5)
                                         .overlay {
@@ -248,7 +248,7 @@ extension MainView {
             Spacer()
             RoundedRectangle(cornerRadius: 10)
                 .frame(width: width, height: height / 3)
-                .foregroundColor(.white)
+                .foregroundColor(Color("sheet"))
                 .overlay {
                     VStack {
                         Text("Data")
@@ -265,7 +265,7 @@ extension MainView {
                                     Circle()
                                         .frame(width: width / 7)
                                         .foregroundColor(.white)
-                                        .shadow(color: Color("Color"),
+                                        .shadow(color: .black.opacity(0.4),
                                                 radius: 5, x: 0, y: 0)
                                         .blur(radius: 0.5)
                                         .overlay {
@@ -289,7 +289,7 @@ extension MainView {
                                     Circle()
                                         .frame(width: width / 7)
                                         .foregroundColor(.white)
-                                        .shadow(color: Color("Color"),
+                                        .shadow(color: .black.opacity(0.4),
                                                 radius: 5, x: 0, y: 0)
                                         .blur(radius: 0.5)
                                         .overlay {
