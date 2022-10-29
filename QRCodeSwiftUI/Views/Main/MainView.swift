@@ -26,7 +26,7 @@ struct MainView: View {
             
             VStack {
                 Spacer()
-                generateButton.padding(.bottom, 30)
+                generateButton.padding(.bottom)
             }
             .ignoresSafeArea()
             
@@ -50,9 +50,7 @@ struct MainView: View {
             dataView
                 .offset(y: vm.isShowingData ? 0 : height)
                 .onTapGesture {
-                    withAnimation(.spring()) {
-                        vm.isShowingData.toggle()
-                    }
+                    withAnimation(.spring()) { vm.isShowingData.toggle() }
                 }
                 .ignoresSafeArea()
             
@@ -129,47 +127,21 @@ extension MainView {
     }
     
     private var shapesButtons: some View {
-        HStack {
+        HStack(spacing: 35) {
             Spacer()
             VStack {
-                Button(action: {
-                    withAnimation(.spring()) {
-                        vm.isShowingEyes.toggle()
-                    }
-                }) {
-                    Circle()
-                        .frame(width: width / 7)
-                        .foregroundColor(.white)
-                        .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
-                        .blur(radius: 0.5)
-                        .overlay {
-                            Image(vm.selectedEye)
-                                .resizable()
-                                .frame(width: 28, height: 28)
-                        }
-                }
-                .padding(.horizontal)
-                
+                CircleButtonView(
+                    imageName: vm.selectedEye,
+                    action: { vm.showEyesSheet() }
+                )
                 Text("Eye")
             }
             
             VStack {
-                Button(action: {
-                    withAnimation(.spring()) {
-                        vm.isShowingData.toggle()
-                    }
-                }) {
-                    Circle()
-                        .frame(width: width / 7)
-                        .foregroundColor(.white)
-                        .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
-                        .blur(radius: 0.5)
-                        .overlay {
-                            Image(vm.selectedData)
-                                .resizable()
-                                .frame(width: 28, height: 28)
-                        }
-                }
+                CircleButtonView(
+                    imageName: vm.selectedData,
+                    action: { vm.showDataSheet()}
+                )
                 Text("Data")
             }
         }
@@ -183,54 +155,24 @@ extension MainView {
                 .foregroundColor(Color("sheet"))
                 .overlay {
                     VStack {
-                        Text("Eye")
-                            .font(.headline)
+                        Text("Eye").font(.headline)
                         Spacer()
                         HStack {
                             ForEach(0..<3) { index in
-                                Button(action: {
-                                    vm.selectedEye = vm.eyes[index]
-                                    withAnimation(.spring()) {
-                                        vm.isShowingEyes.toggle()
-                                    }
-                                }) {
-                                    Circle()
-                                        .frame(width: width / 7)
-                                        .foregroundColor(.white)
-                                        .shadow(color: .black.opacity(0.4),
-                                                radius: 5, x: 0, y: 0)
-                                        .blur(radius: 0.5)
-                                        .overlay {
-                                            Image(vm.eyes[index])
-                                                .resizable()
-                                                .frame(width: 30, height: 30)
-                                        }
-                                }
+                                CircleButtonView(
+                                    imageName: vm.eyes[index],
+                                    action: { vm.selectEye(index: index) }
+                                )
                                 .padding(.horizontal)
                             }
                         }
                         .padding()
                         HStack {
                             ForEach(3..<7) { index in
-                                Button(action: {
-                                    vm.selectedEye = vm.eyes[index]
-                                    withAnimation(.spring()) {
-                                        vm.isShowingEyes.toggle()
-                                    }
-                                }) {
-                                    Circle()
-                                        .frame(width: width / 7)
-                                        .foregroundColor(.white)
-                                        .shadow(color: .black.opacity(0.4),
-                                                radius: 5, x: 0, y: 0)
-                                        .blur(radius: 0.5)
-                                        .overlay {
-                                            Image(vm.eyes[index])
-                                                .resizable()
-                                                .frame(width: 30, height: 30)
-                                                .foregroundColor(.gray)
-                                        }
-                                }
+                                CircleButtonView(
+                                    imageName: vm.eyes[index],
+                                    action: { vm.selectEye(index: index) }
+                                )
                                 .padding(.horizontal)
                             }
                         }
@@ -256,49 +198,20 @@ extension MainView {
                         Spacer()
                         HStack {
                             ForEach(0..<2) { index in
-                                Button(action: {
-                                    vm.selectedData = vm.data[index]
-                                    withAnimation(.spring()) {
-                                        vm.isShowingData.toggle()
-                                    }
-                                }) {
-                                    Circle()
-                                        .frame(width: width / 7)
-                                        .foregroundColor(.white)
-                                        .shadow(color: .black.opacity(0.4),
-                                                radius: 5, x: 0, y: 0)
-                                        .blur(radius: 0.5)
-                                        .overlay {
-                                            Image(vm.data[index])
-                                                .resizable()
-                                                .frame(width: 30, height: 30)
-                                        }
-                                }
+                                CircleButtonView(
+                                    imageName: vm.data[index],
+                                    action: { vm.selectData(index: index) }
+                                )
                                 .padding(.horizontal)
                             }
                         }
                         .padding()
                         HStack {
                             ForEach(2..<5) { index in
-                                Button(action: {
-                                    vm.selectedData = vm.data[index]
-                                    withAnimation(.spring()) {
-                                        vm.isShowingData.toggle()
-                                    }
-                                }) {
-                                    Circle()
-                                        .frame(width: width / 7)
-                                        .foregroundColor(.white)
-                                        .shadow(color: .black.opacity(0.4),
-                                                radius: 5, x: 0, y: 0)
-                                        .blur(radius: 0.5)
-                                        .overlay {
-                                            Image(vm.data[index])
-                                                .resizable()
-                                                .frame(width: 30, height: 30)
-                                                .foregroundColor(.gray)
-                                        }
-                                }
+                                CircleButtonView(
+                                    imageName: vm.data[index],
+                                    action: { vm.selectData(index: index) }
+                                )
                                 .padding(.horizontal)
                             }
                         }
@@ -310,3 +223,4 @@ extension MainView {
         }
     }
 }
+

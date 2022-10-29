@@ -33,5 +33,32 @@ class MainViewModel: ObservableObject {
     }
     
     func rest() { text = "" }
-  
+    
+    func selectEye(index: Int) {
+        selectedEye = eyes[index]
+        withAnimation(.spring()) {
+            isShowingEyes.toggle()
+        }
+    }
+    
+    func selectData(index: Int) {
+        selectedData = data[index]
+        withAnimation(.spring()) {
+            isShowingData.toggle()
+        }
+    }
+    
+    func showDataSheet() {
+        withAnimation(.spring()) {
+            isShowingData.toggle()
+        }
+    }
+    
+    func showEyesSheet() {
+        withAnimation(.spring()) {
+            isShowingEyes.toggle()
+        }
+    }
+    
+    
 }
