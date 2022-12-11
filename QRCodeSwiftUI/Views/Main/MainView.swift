@@ -18,15 +18,13 @@ struct MainView: View {
                     ColorPicker("Background color",
                                 selection: $vm.backgroundColor).padding()
                     
-                    shapesButtons.padding()
-                    
                 }
                 .padding(.horizontal)
             }
             
             VStack {
                 Spacer()
-                generateButton.padding(.bottom)
+                generateButton.padding(.bottom, 40)
             }
             .ignoresSafeArea()
             
@@ -38,21 +36,6 @@ struct MainView: View {
                     color2: vm.backgroundColor),
                 isShowingQR: $vm.isShowingQR
             )
-            eyesView
-                .offset(y: vm.isShowingEyes ? 0 : height)
-                .onTapGesture {
-                    withAnimation(.spring()) {
-                        vm.isShowingEyes.toggle()
-                    }
-                }
-                .ignoresSafeArea()
-            
-            dataView
-                .offset(y: vm.isShowingData ? 0 : height)
-                .onTapGesture {
-                    withAnimation(.spring()) { vm.isShowingData.toggle() }
-                }
-                .ignoresSafeArea()
             
         }
         .navigationTitle("QR")
