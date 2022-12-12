@@ -23,7 +23,7 @@ struct MainView: View {
             }
             .ignoresSafeArea()
             
-            blackView
+            BlackView(opacity: vm.isShowingQR ? 0.5 : 0)
             
             QRCodeSheetView(
                 vm: vm.getQRCodeViewModel(),
@@ -59,7 +59,7 @@ extension MainView {
             .multilineTextAlignment(.leading)
             .frame(width: width - 40, height: height / 4)
             .cornerRadius(10)
-            .shadow(color: .shadowColor, radius: 5, x: 0, y: 0)
+            .shadow(color: .lightShadowColor, radius: 5, x: 0, y: 0)
     }
     
     private var colorPickers: some View {
@@ -68,19 +68,6 @@ extension MainView {
             ColorPicker("Background color", selection: $vm.backgroundColor)
         }
         .padding()
-    }
-    
-    private var blackView: some View {
-        Rectangle()
-            .ignoresSafeArea()
-            .foregroundColor(.black)
-            .opacity(vm.isShowingQR
-                     ? 0.4
-                     : vm.isShowingEyes
-                     ? 0.4
-                     : vm.isShowingData
-                     ? 0.4
-                     : 0)
     }
     
     private var doneButtonForToolBar: some View {

@@ -6,13 +6,18 @@ struct ShareButtonView: View {
     var body: some View {
         if #available(iOS 16.0, *) {
             ShareLink(
-                item: Image(uiImage: UIImage(data: codeImageData)!),
-                preview: SharePreview(
-                    "QR-code",
-                    image: Image(uiImage: UIImage(data: codeImageData)!))) {
-                        Image(systemName: "square.and.arrow.up")
-                            .font(.system(size: imageSize))
-                    }
+                item:
+                    Image(uiImage: (UIImage(data: codeImageData)
+                                    ?? UIImage(named: "defaultQRImage"))!),
+                preview:
+                    SharePreview(
+                        "QR-code",
+                        image:
+                            Image(uiImage: (UIImage(data: codeImageData)
+                                            ?? UIImage(named: "defaultQRImage"))!))) {
+                                Image(systemName: "square.and.arrow.up")
+                                    .font(.system(size: imageSize))
+                            }
         } else {
             Button(action: { showShareView() }) {
                 Image(systemName: "square.and.arrow.up")
@@ -44,3 +49,4 @@ struct ShareButtonView_Previews: PreviewProvider {
         ShareButtonView(codeImageData: Data(), imageSize: 30)
     }
 }
+

@@ -4,7 +4,6 @@ struct QRCodeSheetView: View {
     @EnvironmentObject var savedCodesViewModel: SavedCodesViewViewModel
     @ObservedObject var vm: QRCodeSheetViewModel
     @Binding var isShowingQR: Bool
-    
     private let height = UIScreen.main.bounds.height
     private let width = UIScreen.main.bounds.width
     var body: some View {
@@ -58,7 +57,7 @@ extension QRCodeSheetView {
             )
             .padding(.leading, width - 80)
             if vm.isGoingToSave { nameTF }
-            codeImage
+            QRCodeImageView(imageData: vm.qrImageData)
             Spacer()
             
             ButtonView(title: "Save", action: saveQR).padding(.bottom, 40)

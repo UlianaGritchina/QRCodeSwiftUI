@@ -6,4 +6,5 @@ extension Color {
     static let textColor = Color("text")
     static let buttonColor = Color("button")
     static let grabberColor = Color("grabber")
+    static let lightShadowColor = Color("lightShadow")
 }
