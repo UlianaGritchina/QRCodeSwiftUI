@@ -4,14 +4,14 @@ struct ButtonView: View {
     let title: String
     let action: () -> ()
     var body: some View {
-        Button(action: { withAnimation(.spring()) { action() } }) {
+        Button(action:  action) {
             Text(title)
                 .font(.headline)
-                .frame(width: UIScreen.main.bounds.width - 80, height: 50)
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
                 .foregroundColor(.textColor)
-                .background(Color.buttonColor)
+                .background(Color.accentColor)
                 .cornerRadius(10)
-                .shadow(color: .shadowColor, radius: 5, x: 0, y: 0)
         }
     }
 }

@@ -8,7 +8,8 @@ struct QRCodeSheetView: View {
     private let width = UIScreen.main.bounds.width
     var body: some View {
         ZStack {
-            helloFriendView
+            blackView
+            
             sheet
         }
     }
@@ -33,11 +34,8 @@ struct QRCodeSheetView_Previews: PreviewProvider {
 extension QRCodeSheetView {
     
     private var sheet: some View {
-        RoundedRectangle(cornerRadius: 15)
-            .frame(width: width, height: height / 2.2)
-            .foregroundColor(.sheetColor)
-            .overlay(qrCodeContent)
-            .offset(y: isShowingQR ? height / 4.7 : height)
+        qrCodeContent
+            .offset(y: isShowingQR ? height / 4 : height)
             .offset(y: vm.currentDragOffsetY)
             .offset(y: vm.endingOffsetY)
             .ignoresSafeArea()
@@ -46,28 +44,29 @@ extension QRCodeSheetView {
                     .onChanged { value in startDrag(value) }
                     .onEnded { value in stopDrag() }
             )
+            .background { helloFriendView  }
     }
     
     private var qrCodeContent: some View {
-        VStack() {
-            grabber.padding(.top)
-            ShareButtonView(
-                codeImageData: vm.qrImageData,
-                imageSize: height / 35
-            )
-            .padding(.leading, width - 80)
-            if vm.isGoingToSave { nameTF }
-            QRCodeImageView(imageData: vm.qrImageData)
-            Spacer()
+        VStack(spacing: 30) {
+            grabber
             
-            ButtonView(title: "Save", action: saveQR).padding(.bottom, 40)
+            if vm.isGoingToSave { nameTF }
+            
+            QRCodeImageView(imageData: vm.qrImageData)
+            
+            ButtonView(title: "Save", action: saveQR)
+                .padding(.bottom, 130)
         }
+        .overlay(alignment: .topTrailing) { shareButton }
+        .padding(.horizontal)
+        .padding()
+        .background(Color.sheetColor.cornerRadius(15))
     }
     
     private var helloFriendView: some View {
         RoundedRectangle(cornerRadius: 15)
-            .frame(width: width, height: height / 2.2)
-            .offset(y: isShowingQR ? height / 4.7 : height)
+            .offset(y: isShowingQR ? height / 4 : height)
             .overlay(
                 VStack {
                     Spacer()
@@ -80,11 +79,27 @@ extension QRCodeSheetView {
         
     }
     
+    private var blackView: some View {
+        Rectangle()
+            .foregroundColor(.black.opacity(isShowingQR ? 0.3 : 0))
+            .ignoresSafeArea()
+            .onTapGesture { dismiss() }
+    }
+    
+    
+    
     private var grabber: some View {
         RoundedRectangle(cornerRadius: 5)
             .frame(width: 40, height: 5)
             .opacity(0.5)
             .foregroundColor(.grabberColor)
+    }
+    
+    private var shareButton: some View {
+        ShareButtonView(
+            codeImageData: vm.qrImageData,
+            imageSize: height / 35
+        )
     }
     
     private var codeImage: some View {
@@ -139,6 +154,12 @@ extension QRCodeSheetView {
             }
         }
         if !isShowingQR { vm.isGoingToSave.toggle() }
+    }
+    
+    private func dismiss() {
+        withAnimation {
+            isShowingQR = false
+        }
     }
     
 }
