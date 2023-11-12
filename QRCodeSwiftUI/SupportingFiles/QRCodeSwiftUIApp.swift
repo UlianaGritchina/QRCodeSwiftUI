@@ -8,7 +8,6 @@ struct QRCodeSwiftUIApp: App {
         WindowGroup {
             TabViewView()
                 .environmentObject(listViewModel)
-                .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

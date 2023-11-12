@@ -2,56 +2,40 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var vm = MainViewModel()
-    
     var body: some View {
         NavigationView {
-            ZStack {
-                contentView
-                
-                QRCodeSheetView(
-                    vm: vm.getQRCodeViewModel(),
-                    isShowingQR: $vm.isShowingQR
-                )
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    header
+                    textEditor
+                    colorPickers
+                }
+                .padding(.horizontal)
             }
             .navigationTitle("QR")
-            .animation(.spring(), value: vm.isShowingQR)
+            .background(BackgroundView())
+            .overlay { generateButton }
             .toolbar {
                 restButton
                 doneButtonForToolBar
             }
+            .sheet(isPresented: $vm.isShowingQR, content: {
+                GeneratedQRView(qrCodeImageData: vm.qrCodeImageData)
+            })
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            MainView()
-        }
+        MainView()
     }
 }
-
 
 //MARK: ELEMENTS
 
 extension MainView {
     
-    
-    private var contentView: some View {
-        ScrollView(showsIndicators: false) {
-            VStack {
-                header
-                
-                textEditor
-                
-                colorPickers
-                    .padding(.bottom, 30)
-                
-                ButtonView(title: "Generate", action: vm.showQRCodeView)
-            }
-            .padding(.horizontal)
-        }
-    }
     private var header: some View {
         Text("Link, email, some text")
             .font(.headline)
@@ -60,11 +44,13 @@ extension MainView {
     
     private var textEditor: some View {
         TextEditor(text: $vm.text)
-            .font(.headline)
-            .frame(maxWidth: 700)
             .frame(height: UIScreen.main.bounds.height / 4)
+            .frame(maxWidth: 700)
             .cornerRadius(10)
-            .shadow(color: .lightShadowColor, radius: 5, x: 0, y: 0)
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.gray.opacity(0.4), lineWidth: 0.5)
+            }
     }
     
     private var colorPickers: some View {
@@ -73,6 +59,17 @@ extension MainView {
             ColorPicker("Background color", selection: $vm.backgroundColor)
         }
         .padding(.top)
+    }
+    
+    private var generateButton: some View {
+        VStack {
+            Spacer()
+            ButtonView(title: "Generate", action: vm.showQRCodeView)
+                .padding()
+                .padding(.bottom, 80)
+                .background(.ultraThinMaterial)
+        }
+        .ignoresSafeArea()
     }
     
     private var doneButtonForToolBar: some ToolbarContent {

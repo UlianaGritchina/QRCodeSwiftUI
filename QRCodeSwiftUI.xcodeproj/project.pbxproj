@@ -8,12 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0E3023ED28CF51A300037184 /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3023EC28CF51A300037184 /* ShareButtonView.swift */; };
-		0E50443728E4146900B4AAB3 /* QrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50443628E4146900B4AAB3 /* QrView.swift */; };
-		0E5C14A328CB46BD0021FB3E /* QRCodeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C14A228CB46BD0021FB3E /* QRCodeSheetView.swift */; };
 		0E5C14A828CB4AFE0021FB3E /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C14A728CB4AFE0021FB3E /* UIApplication+Extension.swift */; };
 		0E6878E02A4A115900DC7D77 /* TabViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6878DF2A4A115900DC7D77 /* TabViewView.swift */; };
 		0E77314F28CB4FB800B10086 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77314E28CB4FB800B10086 /* MainViewModel.swift */; };
-		0E77315228CB547A00B10086 /* QRCodeSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77315128CB547A00B10086 /* QRCodeSheetViewModel.swift */; };
 		0E77315428CB5B9200B10086 /* SavedCodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77315328CB5B9200B10086 /* SavedCodesView.swift */; };
 		0E7D54D228CCB5F200F511A4 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D54D128CCB5F200F511A4 /* QRCode.swift */; };
 		0E7D54D428CCD67800F511A4 /* SavedCodeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D54D328CCD67800F511A4 /* SavedCodeRowView.swift */; };
@@ -27,16 +24,17 @@
 		0E8732F628C8AE3100645115 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8732F528C8AE3100645115 /* Preview Assets.xcassets */; };
 		0E8AED932947065900F458ED /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8AED922947065900F458ED /* BlackView.swift */; };
 		0E8AED962947083A00F458ED /* QRCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8AED952947083A00F458ED /* QRCodeImageView.swift */; };
+		0EA7D5132B013AD6005C9EC1 /* QRGeneratorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7D5122B013AD6005C9EC1 /* QRGeneratorManager.swift */; };
+		0EA7D5152B014082005C9EC1 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7D5142B014082005C9EC1 /* BackgroundView.swift */; };
+		0EA7D5172B0142B8005C9EC1 /* GeneratedQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7D5162B0142B8005C9EC1 /* GeneratedQRView.swift */; };
+		0EA7D51A2B0146D7005C9EC1 /* QrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7D5192B0146D7005C9EC1 /* QrView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E3023EC28CF51A300037184 /* ShareButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
-		0E50443628E4146900B4AAB3 /* QrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrView.swift; sourceTree = "<group>"; };
-		0E5C14A228CB46BD0021FB3E /* QRCodeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSheetView.swift; sourceTree = "<group>"; };
 		0E5C14A728CB4AFE0021FB3E /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		0E6878DF2A4A115900DC7D77 /* TabViewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewView.swift; sourceTree = "<group>"; };
 		0E77314E28CB4FB800B10086 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		0E77315128CB547A00B10086 /* QRCodeSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeSheetViewModel.swift; sourceTree = "<group>"; };
 		0E77315328CB5B9200B10086 /* SavedCodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCodesView.swift; sourceTree = "<group>"; };
 		0E7D54D128CCB5F200F511A4 /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		0E7D54D328CCD67800F511A4 /* SavedCodeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCodeRowView.swift; sourceTree = "<group>"; };
@@ -51,6 +49,10 @@
 		0E8732F528C8AE3100645115 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0E8AED922947065900F458ED /* BlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackView.swift; sourceTree = "<group>"; };
 		0E8AED952947083A00F458ED /* QRCodeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeImageView.swift; sourceTree = "<group>"; };
+		0EA7D5122B013AD6005C9EC1 /* QRGeneratorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGeneratorManager.swift; sourceTree = "<group>"; };
+		0EA7D5142B014082005C9EC1 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		0EA7D5162B0142B8005C9EC1 /* GeneratedQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedQRView.swift; sourceTree = "<group>"; };
+		0EA7D5192B0146D7005C9EC1 /* QrView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,16 +91,14 @@
 			path = TabView;
 			sourceTree = "<group>";
 		};
-		0E6878E22A4A159000DC7D77 /* Views */ = {
+		0E6878E22A4A159000DC7D77 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				0E6878E12A4A125500DC7D77 /* TabView */,
 				0E77314D28CB4F9E00B10086 /* Main */,
-				0E05638A28D1E9EB005C9476 /* QRCodeDitail */,
 				0E77315528CB5B9500B10086 /* SavedCodes */,
-				0E77315028CB50AD00B10086 /* QRCodeSheet */,
 			);
-			path = Views;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		0E6878E32A4A15A900DC7D77 /* SupportingFiles */ = {
@@ -117,22 +117,15 @@
 			children = (
 				0E77314E28CB4FB800B10086 /* MainViewModel.swift */,
 				0E8732F028C8AE2D00645115 /* MainView.swift */,
+				0EA7D5182B014683005C9EC1 /* GeneratedQRView */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		0E77315028CB50AD00B10086 /* QRCodeSheet */ = {
-			isa = PBXGroup;
-			children = (
-				0E7F4D962945E569000EFB14 /* ViewModels */,
-				0E7F4D972945E571000EFB14 /* Views */,
-			);
-			path = QRCodeSheet;
 			sourceTree = "<group>";
 		};
 		0E77315528CB5B9500B10086 /* SavedCodes */ = {
 			isa = PBXGroup;
 			children = (
+				0E05638A28D1E9EB005C9476 /* QRCodeDitail */,
 				0E7F4D942945E54A000EFB14 /* ViewModels */,
 				0E7F4D952945E559000EFB14 /* Views */,
 			);
@@ -164,29 +157,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0E7F4D962945E569000EFB14 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				0E77315128CB547A00B10086 /* QRCodeSheetViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		0E7F4D972945E571000EFB14 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0E5C14A228CB46BD0021FB3E /* QRCodeSheetView.swift */,
-				0E50443628E4146900B4AAB3 /* QrView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		0E82A0CF28CDD7A200AB1AE3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0EA7D5142B014082005C9EC1 /* BackgroundView.swift */,
 				0E8AED922947065900F458ED /* BlackView.swift */,
-				0E3023EC28CF51A300037184 /* ShareButtonView.swift */,
 				0E7F4D9B2945ECFF000EFB14 /* ButtonView.swift */,
+				0E3023EC28CF51A300037184 /* ShareButtonView.swift */,
+				0EA7D5192B0146D7005C9EC1 /* QrView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -211,9 +189,10 @@
 			isa = PBXGroup;
 			children = (
 				0E6878E32A4A15A900DC7D77 /* SupportingFiles */,
+				0EA7D5112B013AC8005C9EC1 /* Managers */,
 				0E7D54D028CCB5DA00F511A4 /* Models */,
 				0E82A0CF28CDD7A200AB1AE3 /* UI */,
-				0E6878E22A4A159000DC7D77 /* Views */,
+				0E6878E22A4A159000DC7D77 /* Core */,
 			);
 			path = QRCodeSwiftUI;
 			sourceTree = "<group>";
@@ -233,6 +212,22 @@
 				0E8AED952947083A00F458ED /* QRCodeImageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0EA7D5112B013AC8005C9EC1 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7D5122B013AD6005C9EC1 /* QRGeneratorManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		0EA7D5182B014683005C9EC1 /* GeneratedQRView */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7D5162B0142B8005C9EC1 /* GeneratedQRView.swift */,
+			);
+			path = GeneratedQRView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,21 +307,22 @@
 				0E8732F128C8AE2D00645115 /* MainView.swift in Sources */,
 				0E8732EF28C8AE2D00645115 /* QRCodeSwiftUIApp.swift in Sources */,
 				0E8AED962947083A00F458ED /* QRCodeImageView.swift in Sources */,
+				0EA7D5172B0142B8005C9EC1 /* GeneratedQRView.swift in Sources */,
 				0E8AED932947065900F458ED /* BlackView.swift in Sources */,
 				0E7F4D9C2945ECFF000EFB14 /* ButtonView.swift in Sources */,
 				0E5C14A828CB4AFE0021FB3E /* UIApplication+Extension.swift in Sources */,
-				0E50443728E4146900B4AAB3 /* QrView.swift in Sources */,
 				0E7D54D828CCF36C00F511A4 /* QRCodeDetailView.swift in Sources */,
 				0E7D54D428CCD67800F511A4 /* SavedCodeRowView.swift in Sources */,
-				0E77315228CB547A00B10086 /* QRCodeSheetViewModel.swift in Sources */,
+				0EA7D5152B014082005C9EC1 /* BackgroundView.swift in Sources */,
 				0E3023ED28CF51A300037184 /* ShareButtonView.swift in Sources */,
 				0E6878E02A4A115900DC7D77 /* TabViewView.swift in Sources */,
 				0E77314F28CB4FB800B10086 /* MainViewModel.swift in Sources */,
 				0E7D54D228CCB5F200F511A4 /* QRCode.swift in Sources */,
 				0E7D54D628CCF32400F511A4 /* SavedCodesViewModel.swift in Sources */,
-				0E5C14A328CB46BD0021FB3E /* QRCodeSheetView.swift in Sources */,
 				0E77315428CB5B9200B10086 /* SavedCodesView.swift in Sources */,
 				0E7F4D9A2945E600000EFB14 /* Color + Extension.swift in Sources */,
+				0EA7D5132B013AD6005C9EC1 /* QRGeneratorManager.swift in Sources */,
+				0EA7D51A2B0146D7005C9EC1 /* QrView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
