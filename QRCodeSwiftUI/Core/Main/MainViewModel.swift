@@ -9,7 +9,8 @@ class MainViewModel: ObservableObject {
     @Published var isShowingQR = false
     @Published var qrCodeColor: Color = .black
     @Published var backgroundColor: Color = .white
-    @Published var qrCodeImageData: Data?
+    var qrCodeImageData: Data?
+    @Published var generatedQRCode: QRCode?
     
     // MARK: - Properties
     
@@ -24,6 +25,9 @@ class MainViewModel: ObservableObject {
             content: text
         ) {
             qrCodeImageData = data
+        }
+        if let qrCodeImageData {
+            generatedQRCode = QRCode(name: "", text: text, imageData: qrCodeImageData)
         }
     }
     

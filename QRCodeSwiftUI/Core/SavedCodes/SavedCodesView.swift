@@ -5,22 +5,29 @@ struct SavedCodesView: View {
     @EnvironmentObject var vm: SavedCodesViewViewModel
     var body: some View {
         NavigationView {
-            VStack {
-                if !vm.codes.isEmpty {
-                    List {
-                        ForEach(vm.codes) { code in
-                            SavedCodeRowView(code: code)
-                        }
-                        .onDelete(perform: vm.deleteItem)
-                        .onMove(perform: vm.moveItem)
+            ScrollView {
+                VStack {
+                    if !vm.codes.isEmpty {
+                        qrsList
+                    } else {
+                        Text("No saved QR codes yet")
+                            .bold()
                     }
-                } else {
-                    Text("No saved QR codes yet").bold()
                 }
             }
             .navigationTitle("Saved")
-            .navigationBarItems(trailing: EditButton())
+            .background(BackgroundView())
             .onAppear { vm.setQRs() }
+        }
+    }
+    
+    private var qrsList: some View {
+        VStack {
+            ForEach(vm.codes) { code in
+                SavedCodeRowView(code: code)
+                    .padding(.horizontal)
+                    .padding(.bottom)
+            }
         }
     }
     

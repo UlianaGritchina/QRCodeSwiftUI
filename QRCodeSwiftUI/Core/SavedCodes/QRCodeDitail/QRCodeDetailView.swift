@@ -4,16 +4,19 @@ import SwiftUI
 struct QRCodeDetailView: View {
     let qrCode: QRCode
     var body: some View {
-        VStack {
-            Spacer()
-            QRCodeImageView(imageData: qrCode.imageData)
-            Spacer()
-            Spacer()
+        ZStack {
+            BackgroundView()
+            VStack {
+                Spacer()
+                QrView(data: qrCode.imageData, size: 300)
+                Spacer()
+                Spacer()
+            }
         }
         .navigationTitle(qrCode.name)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                ShareButtonView(codeImageData: qrCode.imageData, imageSize: 20)
+                ShareButtonView(codeImageData: qrCode.imageData, imageSize: 18)
             }
         }
     }

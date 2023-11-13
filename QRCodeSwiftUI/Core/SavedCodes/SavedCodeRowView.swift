@@ -10,21 +10,30 @@ struct SavedCodeRowView: View {
             } label: {
                 VStack(alignment: .leading) {
                     qrCodeName
-                    HStack() {
+                    HStack(alignment: .top) {
                         qrCodeImage
                         qrCodeData
+                        Spacer()
                     }
                 }
             }
         }
+        .padding()
+        .background(Color("cardBackground"))
+        .cornerRadius(10)
+        .shadow(color: Color("shadow").opacity(0.5), radius: 5, x: 3, y: 5)
     }
 }
 
 struct SavedCodeRowView_Previews: PreviewProvider {
     static var previews: some View {
-        SavedCodeRowView(code: QRCode(name: "name",
-                                      text: "text",
-                                      imageData: Data()))
+        SavedCodeRowView(
+            code: QRCode(
+                name: "name",
+                text: "text",
+                imageData: (UIImage(named: "defaultQRImage")?.pngData())!
+            )
+        )
     }
 }
 
@@ -32,7 +41,6 @@ extension SavedCodeRowView {
     
     private var qrCodeName: some View {
         Text(code.name)
-            .padding(.top)
             .font(.headline)
     }
     
@@ -49,7 +57,7 @@ extension SavedCodeRowView {
         Text(code.text)
             .font(.subheadline)
             .foregroundColor(.gray)
-            .frame(maxHeight: 90)
+            .multilineTextAlignment(.leading)
     }
     
 }

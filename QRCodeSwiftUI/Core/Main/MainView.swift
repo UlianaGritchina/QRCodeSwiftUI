@@ -20,7 +20,7 @@ struct MainView: View {
                 doneButtonForToolBar
             }
             .sheet(isPresented: $vm.isShowingQR, content: {
-                GeneratedQRView(qrCodeImageData: vm.qrCodeImageData)
+                GeneratedQRView(qrCode: vm.generatedQRCode)
             })
         }
     }
