@@ -19,7 +19,8 @@ struct SavedCodesView: View {
                 }
             }
             .navigationTitle("Saved")
-        .navigationBarItems(trailing: EditButton())
+            .navigationBarItems(trailing: EditButton())
+            .onAppear { vm.setQRs() }
         }
     }
     

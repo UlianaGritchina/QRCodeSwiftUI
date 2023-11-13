@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E3023ED28CF51A300037184 /* ShareButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3023EC28CF51A300037184 /* ShareButtonView.swift */; };
+		0E3D0DD42B029C9400F5A55E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3D0DD32B029C9400F5A55E /* UserDefaultsManager.swift */; };
 		0E5C14A828CB4AFE0021FB3E /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C14A728CB4AFE0021FB3E /* UIApplication+Extension.swift */; };
 		0E6878E02A4A115900DC7D77 /* TabViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6878DF2A4A115900DC7D77 /* TabViewView.swift */; };
 		0E77314F28CB4FB800B10086 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E77314E28CB4FB800B10086 /* MainViewModel.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		0E3023EC28CF51A300037184 /* ShareButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareButtonView.swift; sourceTree = "<group>"; };
+		0E3D0DD32B029C9400F5A55E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		0E5C14A728CB4AFE0021FB3E /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		0E6878DF2A4A115900DC7D77 /* TabViewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewView.swift; sourceTree = "<group>"; };
 		0E77314E28CB4FB800B10086 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -125,9 +127,10 @@
 		0E77315528CB5B9500B10086 /* SavedCodes */ = {
 			isa = PBXGroup;
 			children = (
+				0E7D54D528CCF32400F511A4 /* SavedCodesViewModel.swift */,
+				0E77315328CB5B9200B10086 /* SavedCodesView.swift */,
+				0E7D54D328CCD67800F511A4 /* SavedCodeRowView.swift */,
 				0E05638A28D1E9EB005C9476 /* QRCodeDitail */,
-				0E7F4D942945E54A000EFB14 /* ViewModels */,
-				0E7F4D952945E559000EFB14 /* Views */,
 			);
 			path = SavedCodes;
 			sourceTree = "<group>";
@@ -138,23 +141,6 @@
 				0E7D54D128CCB5F200F511A4 /* QRCode.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		0E7F4D942945E54A000EFB14 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				0E7D54D528CCF32400F511A4 /* SavedCodesViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		0E7F4D952945E559000EFB14 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0E77315328CB5B9200B10086 /* SavedCodesView.swift */,
-				0E7D54D328CCD67800F511A4 /* SavedCodeRowView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		0E82A0CF28CDD7A200AB1AE3 /* UI */ = {
@@ -218,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA7D5122B013AD6005C9EC1 /* QRGeneratorManager.swift */,
+				0E3D0DD32B029C9400F5A55E /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -311,6 +298,7 @@
 				0E8AED932947065900F458ED /* BlackView.swift in Sources */,
 				0E7F4D9C2945ECFF000EFB14 /* ButtonView.swift in Sources */,
 				0E5C14A828CB4AFE0021FB3E /* UIApplication+Extension.swift in Sources */,
+				0E3D0DD42B029C9400F5A55E /* UserDefaultsManager.swift in Sources */,
 				0E7D54D828CCF36C00F511A4 /* QRCodeDetailView.swift in Sources */,
 				0E7D54D428CCD67800F511A4 /* SavedCodeRowView.swift in Sources */,
 				0EA7D5152B014082005C9EC1 /* BackgroundView.swift in Sources */,
