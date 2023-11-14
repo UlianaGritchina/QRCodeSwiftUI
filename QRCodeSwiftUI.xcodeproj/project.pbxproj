@@ -29,6 +29,7 @@
 		0EA7D5152B014082005C9EC1 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7D5142B014082005C9EC1 /* BackgroundView.swift */; };
 		0EA7D5172B0142B8005C9EC1 /* GeneratedQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7D5162B0142B8005C9EC1 /* GeneratedQRView.swift */; };
 		0EA7D51A2B0146D7005C9EC1 /* QrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7D5192B0146D7005C9EC1 /* QrView.swift */; };
+		0EBCBDE22B03DA2C008B9C5D /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBCBDE12B03DA2C008B9C5D /* CircleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		0EA7D5142B014082005C9EC1 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		0EA7D5162B0142B8005C9EC1 /* GeneratedQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedQRView.swift; sourceTree = "<group>"; };
 		0EA7D5192B0146D7005C9EC1 /* QrView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrView.swift; sourceTree = "<group>"; };
+		0EBCBDE12B03DA2C008B9C5D /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				0E7D54D728CCF36C00F511A4 /* QRCodeDetailView.swift */,
+				0EBCBDE12B03DA2C008B9C5D /* CircleButton.swift */,
 			);
 			path = QRCodeDitail;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EBCBDE22B03DA2C008B9C5D /* CircleButton.swift in Sources */,
 				0E8732F128C8AE2D00645115 /* MainView.swift in Sources */,
 				0E8732EF28C8AE2D00645115 /* QRCodeSwiftUIApp.swift in Sources */,
 				0EA7D5172B0142B8005C9EC1 /* GeneratedQRView.swift in Sources */,
