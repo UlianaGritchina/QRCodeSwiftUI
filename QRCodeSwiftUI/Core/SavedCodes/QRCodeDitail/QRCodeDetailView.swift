@@ -2,19 +2,25 @@
 import SwiftUI
 
 struct QRCodeDetailView: View {
-    let qrCode: QRCode
+    @ObservedObject private var viewModel: QRCodeDetailViewModel
+    @Environment(\.dismiss) private var dismiss
+    
+    init(qrCode: QRCode) {
+        viewModel = QRCodeDetailViewModel(qrCode: qrCode)
+    }
+    
     var body: some View {
         ZStack {
             BackgroundView()
             VStack {
                 Spacer()
-                QrView(data: qrCode.imageData, size: 300)
+                QrView(data: viewModel.qrCode.imageData, size: 300)
                 Spacer()
                 Spacer()
                 buttons
             }
         }
-        .navigationTitle(qrCode.name)
+        .navigationTitle(viewModel.qrCode.name)
     }
     
 }
@@ -36,7 +42,10 @@ extension QRCodeDetailView {
     private var buttons: some View {
         HStack {
             Spacer()
-            CircleButton(imageName: "trash", action: { })
+            CircleButton(imageName: "trash", action: { 
+                viewModel.deleteQRCode()
+                dismiss()
+            })
             Spacer()
             shareButton
             Spacer()
@@ -48,7 +57,7 @@ extension QRCodeDetailView {
     }
     
     private var shareButton: some View {
-        ShareButtonView(codeImageData: qrCode.imageData, imageSize: 18)
+        ShareButtonView(codeImageData: viewModel.qrCodeImageData, imageSize: 18)
             .frame(width: 50, height: 50)
             .background(Color("cardBackground"))
             .cornerRadius(25)
