@@ -19,6 +19,10 @@ struct TabViewView: View {
                 .tabItem {
                     Label("Saved", systemImage: "bookmark")
                 }
+            InfoView()
+                .tabItem {
+                    Label("Info", systemImage: "info.circle")
+                }
         }
     }
 }

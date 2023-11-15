@@ -49,7 +49,9 @@ extension QRCodeDetailView {
             Spacer()
             shareButton
             Spacer()
-            CircleButton(imageName: "sun.min", action: {})
+            CircleButton(imageName: "sun.min", action: {
+                
+            })
             Spacer()
         }
         .padding()
