@@ -4,6 +4,32 @@ struct ShareQRButton: View {
     let qrCode: QRCode
     var body: some View {
         if #available(iOS 16.0, *) {
+            shareLink
+        } else {
+            shareButton
+        }
+    }
+}
+
+struct ShareButtonView_Previews: PreviewProvider {
+    static var previews: some View {
+        ShareQRButton(
+            qrCode: QRCode(name: "", text: "", imageData: Data())
+        )
+    }
+}
+
+extension ShareQRButton {
+    
+    private var shareButton: some View {
+        Button(action: { showShareView() }) {
+            Image(systemName: "square.and.arrow.up")
+                .font(.system(size: 18))
+        }
+    }
+    
+    @ViewBuilder  private var shareLink: some View {
+        if #available(iOS 16.0, *) {
             ShareLink(
                 item:
                     Image(uiImage: (UIImage(data: qrCode.imageData)
@@ -14,14 +40,9 @@ struct ShareQRButton: View {
                         image:
                             Image(uiImage: (UIImage(data: qrCode.imageData)
                                             ?? UIImage(named: "defaultQRImage"))!))) {
-                                Image(systemName: "square.and.arrow.up")
-                                    .font(.system(size: 18))
-                            }
-        } else {
-            Button(action: { showShareView() }) {
-                Image(systemName: "square.and.arrow.up")
-                    .font(.system(size: 18))
-            }
+                                                Image(systemName: "square.and.arrow.up")
+                                                    .font(.system(size: 18))
+                                            }
         }
     }
     
@@ -42,12 +63,3 @@ struct ShareQRButton: View {
     }
     
 }
-
-struct ShareButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShareQRButton(
-            qrCode: QRCode(name: "", text: "", imageData: Data())
-        )
-    }
-}
-
