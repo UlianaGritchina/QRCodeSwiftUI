@@ -27,7 +27,12 @@ class MainViewModel: ObservableObject {
             qrCodeImageData = data
         }
         if let qrCodeImageData {
-            generatedQRCode = QRCode(name: "", text: text, imageData: qrCodeImageData)
+            generatedQRCode = QRCode(
+                name: "", 
+                text: text,
+                imageData: qrCodeImageData, 
+                dateCreated: Date()
+            )
         }
     }
     

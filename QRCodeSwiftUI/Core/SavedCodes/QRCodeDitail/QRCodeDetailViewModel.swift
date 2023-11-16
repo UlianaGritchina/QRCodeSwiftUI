@@ -12,6 +12,8 @@ import Foundation
     private var savedQrs: [QRCode] = []
     private let userDefaultsManager = UserDefaultsManager.shared
     
+    @Published var isLightOn = false
+    
     var qrCode: QRCode
     
     init(qrCode: QRCode) {
@@ -26,6 +28,10 @@ import Foundation
     func deleteQRCode() {
         savedQrs.removeAll(where: { $0.id == qrCode.id })
         userDefaultsManager.saveQrs(savedQrs)
+    }
+    
+    func didTapBrightButton() {
+        isLightOn.toggle()
     }
     
 }

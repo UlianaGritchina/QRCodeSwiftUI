@@ -31,7 +31,8 @@ struct SavedCodeRowView_Previews: PreviewProvider {
             code: QRCode(
                 name: "name",
                 text: "text",
-                imageData: (UIImage(named: "defaultQRImage")?.pngData())!
+                imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
+                dateCreated: Date()
             )
         )
     }

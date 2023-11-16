@@ -3,11 +3,7 @@ import Foundation
 
 class SavedCodesViewViewModel: ObservableObject {
     
-    @Published var codes: [QRCode] = [] {
-        didSet {
-            saveCodes()
-        }
-    }
+    @Published var codes: [QRCode] = []
     
     private let userDefaultsManager = UserDefaultsManager.shared
     
@@ -15,20 +11,9 @@ class SavedCodesViewViewModel: ObservableObject {
         setQRs()
     }
     
-    func moveItem(from: IndexSet, to: Int) {
-        codes.move(fromOffsets: from, toOffset: to)
-    }
-    
-    func deleteItem(indexSet: IndexSet) {
-        codes.remove(atOffsets: indexSet)
-    }
-    
-    func saveCodes() {
-        userDefaultsManager.saveQrs(codes)
-    }
-    
     func setQRs() {
         codes = userDefaultsManager.getSavedQRs()
+            .sorted(by: { $0.dateCreated > $1.dateCreated})
     }
     
 }

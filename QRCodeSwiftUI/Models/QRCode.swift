@@ -6,4 +6,5 @@ struct QRCode: Identifiable, Codable {
     var name: String
     let text: String
     let imageData: Data
+    let dateCreated: Date
 }

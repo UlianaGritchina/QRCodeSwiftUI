@@ -5,8 +5,9 @@ struct SavedCodesView: View {
     @EnvironmentObject var vm: SavedCodesViewViewModel
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack {
+            ZStack {
+                BackgroundView()
+                ScrollView {
                     if !vm.codes.isEmpty {
                         qrsList
                     } else {
@@ -16,7 +17,6 @@ struct SavedCodesView: View {
                 }
             }
             .navigationTitle("Saved")
-            .background(BackgroundView())
             .onAppear { vm.setQRs() }
         }
     }

@@ -11,7 +11,7 @@ struct CircleButton: View {
     let imageName: String
     let action: () -> ()
     var body: some View {
-        Button(action: {}, label: {
+        Button(action: action, label: {
             Circle()
                 .frame(width: 50, height: 50)
                 .foregroundColor(Color("cardBackground"))

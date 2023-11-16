@@ -31,7 +31,8 @@ struct QRCodeDetailView_Previews: PreviewProvider {
             qrCode: QRCode(
                 name: "name",
                 text: "text",
-                imageData: (UIImage(named: "defaultQRImage")?.pngData())!
+                imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
+                dateCreated: Date()
             )
         )
     }
@@ -42,20 +43,22 @@ extension QRCodeDetailView {
     private var buttons: some View {
         HStack {
             Spacer()
-            CircleButton(imageName: "trash", action: { 
-                viewModel.deleteQRCode()
-                dismiss()
-            })
+            deleteButton
             Spacer()
             shareButton
             Spacer()
-            CircleButton(imageName: "sun.min", action: {
-                
-            })
+            brightButton
             Spacer()
         }
         .padding()
         .padding(.bottom)
+    }
+    
+    private var deleteButton: some View {
+        CircleButton(imageName: "trash", action: {
+            viewModel.deleteQRCode()
+            dismiss()
+        })
     }
     
     private var shareButton: some View {
@@ -64,6 +67,13 @@ extension QRCodeDetailView {
             .background(Color("cardBackground"))
             .cornerRadius(25)
             .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 0)
+    }
+    
+    private var brightButton: some View {
+        CircleButton(imageName: viewModel.isLightOn ? "sun.max" : "sun.min", action: {
+            viewModel.didTapBrightButton()
+            UIScreen.main.brightness = CGFloat(viewModel.isLightOn ? 1 : 0.5)
+        })
     }
     
 }

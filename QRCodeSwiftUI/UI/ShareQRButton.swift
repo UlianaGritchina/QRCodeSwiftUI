@@ -14,7 +14,12 @@ struct ShareQRButton: View {
 struct ShareButtonView_Previews: PreviewProvider {
     static var previews: some View {
         ShareQRButton(
-            qrCode: QRCode(name: "", text: "", imageData: Data())
+            qrCode: QRCode(
+                name: "",
+                text: "",
+                imageData: Data(),
+                dateCreated: Date()
+            )
         )
     }
 }

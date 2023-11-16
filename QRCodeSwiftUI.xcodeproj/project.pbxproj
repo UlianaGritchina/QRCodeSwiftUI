@@ -77,8 +77,8 @@
 		0E05638A28D1E9EB005C9476 /* QRCodeDitail */ = {
 			isa = PBXGroup;
 			children = (
-				0E7D54D728CCF36C00F511A4 /* QRCodeDetailView.swift */,
 				CEC20A082B04F0C900E5113F /* QRCodeDetailViewModel.swift */,
+				0E7D54D728CCF36C00F511A4 /* QRCodeDetailView.swift */,
 				0EBCBDE12B03DA2C008B9C5D /* CircleButton.swift */,
 			);
 			path = QRCodeDitail;
