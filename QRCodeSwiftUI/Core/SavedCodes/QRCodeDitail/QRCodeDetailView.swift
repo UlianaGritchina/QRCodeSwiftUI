@@ -59,7 +59,7 @@ extension QRCodeDetailView {
     }
     
     private var shareButton: some View {
-        ShareButtonView(codeImageData: viewModel.qrCodeImageData, imageSize: 18)
+        ShareQRButton(qrCode: viewModel.qrCode)
             .frame(width: 50, height: 50)
             .background(Color("cardBackground"))
             .cornerRadius(25)

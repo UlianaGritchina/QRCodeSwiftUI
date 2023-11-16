@@ -33,6 +33,11 @@ struct GeneratedQRView: View {
                 } message: {
                     Text("Set title for your QR code.")
                 }
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        ShareQRButton(qrCode: qrCode)
+                    }
+                }
             }
         }
     }

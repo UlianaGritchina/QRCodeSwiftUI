@@ -1,34 +1,33 @@
 import SwiftUI
 
-struct ShareButtonView: View {
-    let codeImageData: Data
-    let imageSize: CGFloat
+struct ShareQRButton: View {
+    let qrCode: QRCode
     var body: some View {
         if #available(iOS 16.0, *) {
             ShareLink(
                 item:
-                    Image(uiImage: (UIImage(data: codeImageData)
+                    Image(uiImage: (UIImage(data: qrCode.imageData)
                                     ?? UIImage(named: "defaultQRImage"))!),
                 preview:
                     SharePreview(
-                        "QR-code",
+                        "QR-code - \(qrCode.name)",
                         image:
-                            Image(uiImage: (UIImage(data: codeImageData)
+                            Image(uiImage: (UIImage(data: qrCode.imageData)
                                             ?? UIImage(named: "defaultQRImage"))!))) {
                                 Image(systemName: "square.and.arrow.up")
-                                    .font(.system(size: imageSize))
+                                    .font(.system(size: 18))
                             }
         } else {
             Button(action: { showShareView() }) {
                 Image(systemName: "square.and.arrow.up")
-                    .font(.system(size: imageSize))
+                    .font(.system(size: 18))
             }
         }
     }
     
     private func showShareView() {
         let activityVC = UIActivityViewController(
-            activityItems: [codeImageData],
+            activityItems: [qrCode.imageData],
             applicationActivities: nil
         )
         let scenes = UIApplication.shared.connectedScenes
@@ -46,7 +45,9 @@ struct ShareButtonView: View {
 
 struct ShareButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ShareButtonView(codeImageData: Data(), imageSize: 30)
+        ShareQRButton(
+            qrCode: QRCode(name: "", text: "", imageData: Data())
+        )
     }
 }
 
