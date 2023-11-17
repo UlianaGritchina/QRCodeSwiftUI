@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var vm = MainViewModel()
+    @StateObject var viewModel: MainViewModel
+    init(editingQR: QRCode? = nil) {
+        let vm = MainViewModel(editingQRCode: editingQR)
+        _viewModel = StateObject(wrappedValue: vm)
+    }
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
@@ -12,15 +16,15 @@ struct MainView: View {
                 }
                 .padding(.horizontal)
             }
-            .navigationTitle("QR")
+            .navigationTitle(viewModel.navigationTitle)
             .background(BackgroundView())
             .overlay { generateButton }
             .toolbar {
                 restButton
                 doneButtonForToolBar
             }
-            .sheet(isPresented: $vm.isShowingQR, content: {
-                GeneratedQRView(qrCode: vm.generatedQRCode)
+            .sheet(isPresented: $viewModel.isShowingQR, content: {
+                GeneratedQRView(qrCode: viewModel.generatedQRCode)
             })
         }
     }
@@ -43,7 +47,7 @@ extension MainView {
     }
     
     private var textEditor: some View {
-        TextEditor(text: $vm.text)
+        TextEditor(text: $viewModel.text)
             .frame(height: UIScreen.main.bounds.height / 4)
             .frame(maxWidth: 700)
             .cornerRadius(10)
@@ -55,8 +59,8 @@ extension MainView {
     
     private var colorPickers: some View {
         VStack(spacing: 30) {
-            ColorPicker("Color", selection: $vm.qrCodeColor)
-            ColorPicker("Background color", selection: $vm.backgroundColor)
+            ColorPicker("Color", selection: $viewModel.qrCodeColor)
+            ColorPicker("Background color", selection: $viewModel.backgroundColor)
         }
         .padding(.top)
     }
@@ -64,10 +68,13 @@ extension MainView {
     private var generateButton: some View {
         VStack {
             Spacer()
-            ButtonView(title: "Generate", action: vm.showQRCodeView)
-                .padding()
-                .padding(.bottom, 80)
-                .background(.ultraThinMaterial)
+            ButtonView(
+                title: viewModel.generateButtonTitle,
+                action: viewModel.showQRCodeView
+            )
+            .padding()
+            .padding(.bottom, viewModel.isEditView ? 20 : 80)
+            .background(.ultraThinMaterial)
         }
         .ignoresSafeArea()
     }
@@ -81,7 +88,7 @@ extension MainView {
     
     private var restButton: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
-            Button("Rest") { vm.rest() }
+            Button("Rest") { viewModel.rest() }
         }
     }
     

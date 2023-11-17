@@ -10,6 +10,7 @@ class MainViewModel: ObservableObject {
     @Published var qrCodeColor: Color = .black
     @Published var backgroundColor: Color = .white
     @Published var generatedQRCode: QRCode?
+    @Published var editingQRCode: QRCode?
     
     // MARK: - Properties
     
@@ -17,7 +18,32 @@ class MainViewModel: ObservableObject {
     
     private let qrGenerator = QRGeneratorManager.shared
     
+    init(editingQRCode: QRCode? = nil) {
+        self.editingQRCode = editingQRCode
+        setEditingQrCode()
+    }
+    
+    // MARK: - Computed Properties
+    
+    var isEditView: Bool {
+        guard editingQRCode != nil else { return false }
+        return true
+    }
+    
+    var navigationTitle: String {
+        editingQRCode?.name ?? "QR"
+    }
+    
+    var generateButtonTitle: String {
+        isEditView ? "Update" : "Generate"
+    }
+    
     // MARK: - Private Methods
+    
+    private func setEditingQrCode() {
+        guard let editingQRCode else { return }
+        text = editingQRCode.text
+    }
     
     private func generateQRCode() {
         if let data = qrGenerator.generateQRCode(

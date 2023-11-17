@@ -13,12 +13,17 @@ import Foundation
     private let userDefaultsManager = UserDefaultsManager.shared
     
     @Published var isLightOn = false
+    @Published var isShowEditView = false
     
     var qrCode: QRCode
     
     init(qrCode: QRCode) {
         self.qrCode = qrCode
         savedQrs = userDefaultsManager.getSavedQRs()
+    }
+    
+    var brightButtonImageName: String {
+        isLightOn ? "sun.max" : "sun.min"
     }
     
     var qrCodeImageData: Data {
@@ -32,6 +37,10 @@ import Foundation
     
     func didTapBrightButton() {
         isLightOn.toggle()
+    }
+    
+    func showEditView() {
+        isShowEditView = true
     }
     
 }

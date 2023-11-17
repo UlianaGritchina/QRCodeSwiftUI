@@ -21,34 +21,40 @@ struct QRCodeDetailView: View {
             }
         }
         .navigationTitle(viewModel.qrCode.name)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                ShareQRButton(qrCode: viewModel.qrCode)
+            }
+        }
+        .sheet(isPresented: $viewModel.isShowEditView, content: {
+            MainView(editingQR: viewModel.qrCode)
+        })
     }
     
 }
 
 struct QRCodeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCodeDetailView(
-            qrCode: QRCode(
-                name: "name",
-                text: "text",
-                imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
-                dateCreated: Date()
+        NavigationView {
+            QRCodeDetailView(
+                qrCode: QRCode(
+                    name: "name",
+                    text: "text",
+                    imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
+                    dateCreated: Date()
+                )
             )
-        )
+        }
     }
 }
 
 extension QRCodeDetailView {
     
     private var buttons: some View {
-        HStack {
-            Spacer()
+        HStack(spacing: 10) {
             deleteButton
-            Spacer()
-            shareButton
-            Spacer()
+            editButton
             brightButton
-            Spacer()
         }
         .padding()
         .padding(.bottom)
@@ -61,16 +67,15 @@ extension QRCodeDetailView {
         })
     }
     
-    private var shareButton: some View {
-        ShareQRButton(qrCode: viewModel.qrCode)
-            .frame(width: 50, height: 50)
-            .background(Color("cardBackground"))
-            .cornerRadius(25)
-            .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 0)
+    private var editButton: some View {
+        CircleButton(
+            imageName: "slider.horizontal.3",
+            action: viewModel.showEditView
+        )
     }
     
     private var brightButton: some View {
-        CircleButton(imageName: viewModel.isLightOn ? "sun.max" : "sun.min", action: {
+        CircleButton(imageName: viewModel.brightButtonImageName, action: {
             viewModel.didTapBrightButton()
             UIScreen.main.brightness = CGFloat(viewModel.isLightOn ? 1 : 0.5)
         })
