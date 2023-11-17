@@ -5,16 +5,12 @@ struct SavedCodeRowView: View {
     let code: QRCode
     var body: some View {
         VStack {
-            NavigationLink {
-                QRCodeDetailView(qrCode: code)
-            } label: {
-                VStack(alignment: .leading) {
-                    qrCodeName
-                    HStack(alignment: .top) {
-                        qrCodeImage
-                        qrCodeData
-                        Spacer()
-                    }
+            VStack(alignment: .leading) {
+                qrCodeName
+                HStack(alignment: .top) {
+                    qrCodeImage
+                    qrCodeData
+                    Spacer()
                 }
             }
         }

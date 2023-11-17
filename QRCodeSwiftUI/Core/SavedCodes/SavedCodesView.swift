@@ -19,14 +19,17 @@ struct SavedCodesView: View {
             .navigationTitle("Saved")
             .onAppear { vm.setQRs() }
         }
+        .navigationViewStyle(.stack)
     }
     
     private var qrsList: some View {
         VStack {
             ForEach(vm.codes) { code in
-                SavedCodeRowView(code: code)
-                    .padding(.horizontal)
-                    .padding(.bottom)
+                NavigationLink(destination: QRCodeDetailView(qrCode: code)) {
+                    SavedCodeRowView(code: code)
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                }
             }
         }
     }

@@ -22,6 +22,7 @@ struct GeneratedQRView: View {
                 .navigationTitle("Generated")
                 .alert("QR title", isPresented: $vm.isShowAlert) {
                     TextField("Enter your name", text: $vm.qrTitle)
+                        .submitLabel(.done)
                     Button("Cancel", role: .cancel) { }
                     Button("Save", action: saveQR)
                 } message: {
