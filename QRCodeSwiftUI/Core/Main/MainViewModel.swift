@@ -9,10 +9,11 @@ class MainViewModel: ObservableObject {
     @Published var isShowingQR = false
     @Published var qrCodeColor: Color = .black
     @Published var backgroundColor: Color = .white
-    var qrCodeImageData: Data?
     @Published var generatedQRCode: QRCode?
     
     // MARK: - Properties
+    
+    var qrCodeImageData: Data?
     
     private let qrGenerator = QRGeneratorManager.shared
     
@@ -28,9 +29,9 @@ class MainViewModel: ObservableObject {
         }
         if let qrCodeImageData {
             generatedQRCode = QRCode(
-                name: "", 
+                name: "",
                 text: text,
-                imageData: qrCodeImageData, 
+                imageData: qrCodeImageData,
                 dateCreated: Date()
             )
         }
