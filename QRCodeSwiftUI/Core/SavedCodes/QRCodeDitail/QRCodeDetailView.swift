@@ -20,7 +20,7 @@ struct QRCodeDetailView: View {
                 buttons
             }
         }
-        .navigationTitle(viewModel.qrCode.name)
+        .navigationTitle(viewModel.qrCode.title)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 ShareQRButton(qrCode: viewModel.qrCode)
@@ -38,8 +38,10 @@ struct QRCodeDetailView_Previews: PreviewProvider {
         NavigationView {
             QRCodeDetailView(
                 qrCode: QRCode(
-                    name: "name",
-                    text: "text",
+                    title: "name",
+                    content: "text",
+                    foregroundColor: RGBColor(color: .red),
+                    backgroundColor: RGBColor(color: .green),
                     imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
                     dateCreated: Date()
                 )

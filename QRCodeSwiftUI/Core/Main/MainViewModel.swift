@@ -7,7 +7,7 @@ class MainViewModel: ObservableObject {
     
     @Published var text = ""
     @Published var isShowingQR = false
-    @Published var qrCodeColor: Color = .black
+    @Published var foregroundColor: Color = .black
     @Published var backgroundColor: Color = .white
     @Published var generatedQRCode: QRCode?
     @Published var editingQRCode: QRCode?
@@ -31,7 +31,7 @@ class MainViewModel: ObservableObject {
     }
     
     var navigationTitle: String {
-        editingQRCode?.name ?? "QR"
+        editingQRCode?.title ?? "QR"
     }
     
     var generateButtonTitle: String {
@@ -42,21 +42,44 @@ class MainViewModel: ObservableObject {
     
     private func setEditingQrCode() {
         guard let editingQRCode else { return }
-        text = editingQRCode.text
+        text = editingQRCode.content
+        setColorsForEditingQRCode()
     }
+    
+    private func setColorsForEditingQRCode() {
+        if let foreground = editingQRCode?.foregroundColor {
+            foregroundColor = Color(
+                red: foreground.red,
+                green: foreground.green,
+                blue: foreground.blue,
+                opacity: foreground.opacity
+            )
+        }
+        if let background = editingQRCode?.backgroundColor {
+            backgroundColor = Color(
+                red: background.red,
+                green: background.green,
+                blue: background.blue,
+                opacity: background.opacity
+            )
+        }
+    }
+    
     
     private func generateQRCode() {
         if let data = qrGenerator.generateQRCode(
             background: backgroundColor,
-            foregroundColor: qrCodeColor,
+            foregroundColor: foregroundColor,
             content: text
         ) {
             qrCodeImageData = data
         }
         if let qrCodeImageData {
             generatedQRCode = QRCode(
-                name: "",
-                text: text,
+                title: "",
+                content: text,
+                foregroundColor: RGBColor(color: foregroundColor),
+                backgroundColor: RGBColor(color: backgroundColor),
                 imageData: qrCodeImageData,
                 dateCreated: Date()
             )
@@ -72,7 +95,7 @@ class MainViewModel: ObservableObject {
     
     func rest() {
         text = ""
-        qrCodeColor = .black
+        foregroundColor = .black
         backgroundColor = .white
     }
     

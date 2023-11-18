@@ -25,8 +25,10 @@ struct SavedCodeRowView_Previews: PreviewProvider {
     static var previews: some View {
         SavedCodeRowView(
             code: QRCode(
-                name: "name",
-                text: "text",
+                title: "name",
+                content: "text",
+                foregroundColor: RGBColor(color: .black),
+                backgroundColor: RGBColor(color: .white),
                 imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
                 dateCreated: Date()
             )
@@ -37,7 +39,7 @@ struct SavedCodeRowView_Previews: PreviewProvider {
 extension SavedCodeRowView {
     
     private var qrCodeName: some View {
-        Text(code.name)
+        Text(code.title)
             .font(.headline)
     }
     
@@ -51,7 +53,7 @@ extension SavedCodeRowView {
     }
     
     private var qrCodeData: some View {
-        Text(code.text)
+        Text(code.content)
             .font(.subheadline)
             .foregroundColor(.gray)
             .multilineTextAlignment(.leading)

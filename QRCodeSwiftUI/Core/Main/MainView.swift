@@ -6,6 +6,7 @@ struct MainView: View {
         let vm = MainViewModel(editingQRCode: editingQR)
         _viewModel = StateObject(wrappedValue: vm)
     }
+    
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
@@ -59,7 +60,7 @@ extension MainView {
     
     private var colorPickers: some View {
         VStack(spacing: 30) {
-            ColorPicker("Color", selection: $viewModel.qrCodeColor)
+            ColorPicker("Color", selection: $viewModel.foregroundColor)
             ColorPicker("Background color", selection: $viewModel.backgroundColor)
         }
         .padding(.top)

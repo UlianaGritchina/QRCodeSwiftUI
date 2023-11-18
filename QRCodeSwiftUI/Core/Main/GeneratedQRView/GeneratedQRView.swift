@@ -41,8 +41,10 @@ struct GeneratedQRView: View {
 #Preview {
     GeneratedQRView(
         qrCode: QRCode(
-            name: "name",
-            text: "text",
+            title: "name",
+            content: "text",
+            foregroundColor: RGBColor(color: .black), 
+            backgroundColor: RGBColor(color: .white),
             imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
             dateCreated: Date()
         )
@@ -72,7 +74,7 @@ extension GeneratedQRView {
     
     private func saveQR() {
         guard var qrCode else { return }
-        qrCode.name = vm.qrTitle
+        qrCode.title = vm.qrTitle
         vm.addCode(qrCode)
         dismiss()
     }
