@@ -32,6 +32,13 @@ struct QRCodeDetailView: View {
         .onChange(of: viewModel.qrCode) { _ in
             viewModel.updateQRInUserDefaults()
         }
+        .alert(viewModel.deleteAlertTitel, isPresented: $viewModel.isShowAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Delete", role: .destructive) {
+                viewModel.deleteQRCode()
+                dismiss()
+            }
+        }
     }
     
 }
@@ -66,10 +73,7 @@ extension QRCodeDetailView {
     }
     
     private var deleteButton: some View {
-        CircleButton(imageName: "trash", action: {
-            viewModel.deleteQRCode()
-            dismiss()
-        })
+        CircleButton(imageName: "trash", action: viewModel.deleteButtonDidTapp)
     }
     
     private var editButton: some View {

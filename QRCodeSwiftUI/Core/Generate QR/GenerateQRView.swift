@@ -19,7 +19,8 @@ struct GenerateQRView: View {
                     textEditor
                     colorPickers
                 }
-                .padding()
+                .padding(.horizontal)
+                .padding(.top, 5)
             }
             .navigationTitle(viewModel.navigationTitle)
             .background(BackgroundView())

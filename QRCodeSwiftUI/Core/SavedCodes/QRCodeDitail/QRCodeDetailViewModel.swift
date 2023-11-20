@@ -14,6 +14,7 @@ import Foundation
     
     @Published var isLightOn = false
     @Published var isShowEditView = false
+    @Published var isShowAlert = false
     
     var qrCode: QRCode
     
@@ -22,12 +23,22 @@ import Foundation
         userDefaultsManager.setSavedQrs(for: &savedQrs)
     }
     
+    var deleteAlertTitel: String {
+        "Are you sure you want to delete QR"
+        +
+        " '\(qrCode.title)'"
+    }
+    
     var brightButtonImageName: String {
         isLightOn ? "sun.max" : "sun.min"
     }
     
     var qrCodeImageData: Data {
         qrCode.imageData
+    }
+    
+    func deleteButtonDidTapp() {
+        isShowAlert.toggle()
     }
     
     func deleteQRCode() {
