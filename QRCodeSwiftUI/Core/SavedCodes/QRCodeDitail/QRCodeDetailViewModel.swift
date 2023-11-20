@@ -43,4 +43,10 @@ import Foundation
         isShowEditView = true
     }
     
+    func updateQRInUserDefaults() {
+        savedQrs.removeAll(where: {$0.id == qrCode.id })
+        savedQrs.append(qrCode)
+        userDefaultsManager.saveQrs(savedQrs)
+    }
+    
 }

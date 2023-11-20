@@ -2,20 +2,24 @@ import SwiftUI
 
 struct GenerateQRView: View {
     @StateObject var viewModel: ViewModel
-    init(editingQR: QRCode? = nil) {
-        let vm = ViewModel(editingQRCode: editingQR)
+    @Binding var editingQR: QRCode
+    @Environment(\.dismiss) private var dismiss
+    init(editingQR: Binding<QRCode>, isEditingView: Bool = false) {
+        let vm = ViewModel(editingQRCode: editingQR.wrappedValue, isEditView: isEditingView)
         _viewModel = StateObject(wrappedValue: vm)
+        _editingQR = editingQR
     }
     
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 VStack {
+                    qrTitleView
                     header
                     textEditor
                     colorPickers
                 }
-                .padding(.horizontal)
+                .padding()
             }
             .navigationTitle(viewModel.navigationTitle)
             .background(BackgroundView())
@@ -33,7 +37,7 @@ struct GenerateQRView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        GenerateQRView()
+        GenerateQRView(editingQR: .constant(QRCode()))
     }
 }
 
@@ -47,8 +51,24 @@ extension GenerateQRView {
             .foregroundColor(.gray)
     }
     
+    @ViewBuilder private var qrTitleView: some View {
+        if viewModel.isEditView {
+            TextField("title", text: $viewModel.qrTitle)
+                .font(.system(
+                    size: 20,
+                    weight: .regular, design: .rounded
+                ))
+                .padding(10)
+                .background(.gray.opacity(0.2))
+                .cornerRadius(8)
+                .padding(.bottom)
+                .frame(maxWidth: 700)
+            
+        }
+    }
+    
     private var textEditor: some View {
-        TextEditor(text: $viewModel.text)
+        TextEditor(text: $viewModel.content)
             .frame(height: UIScreen.main.bounds.height / 4)
             .frame(maxWidth: 700)
             .cornerRadius(10)
@@ -71,7 +91,13 @@ extension GenerateQRView {
             Spacer()
             ButtonView(
                 title: viewModel.generateButtonTitle,
-                action: viewModel.showQRCodeView
+                action: {
+                    viewModel.generateButtonTapped()
+                    if viewModel.isEditView {
+                        editingQR = viewModel.editingQRCode
+                        dismiss()
+                    }
+                }
             )
             .padding()
             .padding(.bottom, viewModel.isEditView ? 20 : 80)

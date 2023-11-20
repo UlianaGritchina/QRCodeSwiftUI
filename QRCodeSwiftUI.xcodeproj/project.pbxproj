@@ -32,6 +32,7 @@
 		0EBCBDE22B03DA2C008B9C5D /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBCBDE12B03DA2C008B9C5D /* CircleButton.swift */; };
 		0ECE42022B0525DF005EB685 /* RequestReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE42012B0525DE005EB685 /* RequestReviewManager.swift */; };
 		CEC20A092B04F0C900E5113F /* QRCodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC20A082B04F0C900E5113F /* QRCodeDetailViewModel.swift */; };
+		CEE654A52B0B783C00A25EAF /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE654A42B0B783C00A25EAF /* RGBColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		0EBCBDE12B03DA2C008B9C5D /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		0ECE42012B0525DE005EB685 /* RequestReviewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestReviewManager.swift; sourceTree = "<group>"; };
 		CEC20A082B04F0C900E5113F /* QRCodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDetailViewModel.swift; sourceTree = "<group>"; };
+		CEE654A42B0B783C00A25EAF /* RGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				0E7D54D128CCB5F200F511A4 /* QRCode.swift */,
+				CEE654A42B0B783C00A25EAF /* RGBColor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				0EBCBDE22B03DA2C008B9C5D /* CircleButton.swift in Sources */,
 				0ECE42022B0525DF005EB685 /* RequestReviewManager.swift in Sources */,
 				0E8732F128C8AE2D00645115 /* GenerateQRView.swift in Sources */,
+				CEE654A52B0B783C00A25EAF /* RGBColor.swift in Sources */,
 				0E8732EF28C8AE2D00645115 /* QRCodeSwiftUIApp.swift in Sources */,
 				0EA7D5172B0142B8005C9EC1 /* GeneratedQRView.swift in Sources */,
 				0E7F4D9C2945ECFF000EFB14 /* ButtonView.swift in Sources */,

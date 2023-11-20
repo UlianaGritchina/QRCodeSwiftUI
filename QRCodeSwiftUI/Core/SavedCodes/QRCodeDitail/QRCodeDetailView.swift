@@ -27,8 +27,11 @@ struct QRCodeDetailView: View {
             }
         }
         .sheet(isPresented: $viewModel.isShowEditView, content: {
-            GenerateQRView(editingQR: viewModel.qrCode)
+            GenerateQRView(editingQR: $viewModel.qrCode, isEditingView: true)
         })
+        .onChange(of: viewModel.qrCode) { _ in
+            viewModel.updateQRInUserDefaults()
+        }
     }
     
 }

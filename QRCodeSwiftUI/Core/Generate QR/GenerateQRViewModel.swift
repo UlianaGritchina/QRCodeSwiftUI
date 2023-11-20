@@ -7,33 +7,36 @@ extension GenerateQRView {
         
         //MARK: - Published
         
-        @Published var text = ""
+        @Published var content = ""
+        @Published var qrTitle = ""
         @Published var isShowingQR = false
         @Published var foregroundColor: Color = .black
         @Published var backgroundColor: Color = .white
         @Published var generatedQRCode: QRCode?
-        @Published var editingQRCode: QRCode?
+        @Published var editingQRCode: QRCode
         
         // MARK: - Properties
         
+        var isEditView: Bool
         var qrCodeImageData: Data?
         
         private let qrGenerator = QRGeneratorManager.shared
         
-        init(editingQRCode: QRCode? = nil) {
+        init(editingQRCode: QRCode, isEditView: Bool) {
             self.editingQRCode = editingQRCode
+            self.isEditView = isEditView
             setEditingQrCode()
+            qrTitle = editingQRCode.title
         }
         
         // MARK: - Computed Properties
         
-        var isEditView: Bool {
-            guard editingQRCode != nil else { return false }
-            return true
-        }
-        
         var navigationTitle: String {
-            editingQRCode?.title ?? "QR"
+            if isEditView {
+                editingQRCode.title
+            } else {
+                "QR"
+            }
         }
         
         var generateButtonTitle: String {
@@ -43,28 +46,27 @@ extension GenerateQRView {
         // MARK: - Private Methods
         
         private func setEditingQrCode() {
-            guard let editingQRCode else { return }
-            text = editingQRCode.content
-            setColorsForEditingQRCode()
+            if isEditView {
+                content = editingQRCode.content
+                setColorsForEditingQRCode()
+            }
         }
         
         private func setColorsForEditingQRCode() {
-            if let foreground = editingQRCode?.foregroundColor {
-                foregroundColor = Color(
-                    red: foreground.red,
-                    green: foreground.green,
-                    blue: foreground.blue,
-                    opacity: foreground.opacity
-                )
-            }
-            if let background = editingQRCode?.backgroundColor {
-                backgroundColor = Color(
-                    red: background.red,
-                    green: background.green,
-                    blue: background.blue,
-                    opacity: background.opacity
-                )
-            }
+            let foreground = editingQRCode.foregroundColor
+            foregroundColor = Color(
+                red: foreground.red,
+                green: foreground.green,
+                blue: foreground.blue,
+                opacity: foreground.opacity
+            )
+            let background = editingQRCode.backgroundColor
+            backgroundColor = Color(
+                red: background.red,
+                green: background.green,
+                blue: background.blue,
+                opacity: background.opacity
+            )
         }
         
         
@@ -72,14 +74,14 @@ extension GenerateQRView {
             if let data = qrGenerator.generateQRCode(
                 background: backgroundColor,
                 foregroundColor: foregroundColor,
-                content: text
+                content: content
             ) {
                 qrCodeImageData = data
             }
             if let qrCodeImageData {
                 generatedQRCode = QRCode(
                     title: "",
-                    content: text,
+                    content: content,
                     foregroundColor: RGBColor(color: foregroundColor),
                     backgroundColor: RGBColor(color: backgroundColor),
                     imageData: qrCodeImageData,
@@ -90,17 +92,30 @@ extension GenerateQRView {
         
         // MARK: - Public Methods
         
-        func showQRCodeView() {
+        func generateButtonTapped() {
             generateQRCode()
-            isShowingQR = true
+            if isEditView {
+                if let generatedQRCode  {
+                    editingQRCode = QRCode(
+                        id: editingQRCode.id,
+                        title: qrTitle,
+                        content: generatedQRCode.content,
+                        foregroundColor: generatedQRCode.foregroundColor,
+                        backgroundColor: generatedQRCode.backgroundColor,
+                        imageData: generatedQRCode.imageData,
+                        dateCreated: editingQRCode.dateCreated
+                    )
+                }
+            } else {
+                isShowingQR = true
+            }
         }
         
         func rest() {
-            text = ""
+            content = ""
             foregroundColor = .black
             backgroundColor = .white
         }
-        
     }
     
 }
