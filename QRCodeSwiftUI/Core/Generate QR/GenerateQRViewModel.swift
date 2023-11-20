@@ -32,11 +32,7 @@ extension GenerateQRView {
         // MARK: - Computed Properties
         
         var navigationTitle: String {
-            if isEditView {
-                editingQRCode.title
-            } else {
-                "QR"
-            }
+            isEditView ? "Edit" : "Qr"
         }
         
         var generateButtonTitle: String {

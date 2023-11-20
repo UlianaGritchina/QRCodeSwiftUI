@@ -26,6 +26,7 @@ struct GenerateQRView: View {
             .overlay { generateButton }
             .toolbar {
                 restButton
+                closeButton
                 doneButtonForToolBar
             }
             .sheet(isPresented: $viewModel.isShowingQR, content: {
@@ -119,4 +120,12 @@ extension GenerateQRView {
         }
     }
     
+    private var closeButton: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button(action: { dismiss() }) {
+                Image(systemName: "xmark")
+            }
+            .opacity(viewModel.isEditView ? 1 : 0)
+        }
+    }
 }
