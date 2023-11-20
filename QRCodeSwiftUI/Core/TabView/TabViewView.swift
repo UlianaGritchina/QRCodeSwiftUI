@@ -10,7 +10,7 @@ import SwiftUI
 struct TabViewView: View {
     var body: some View {
         TabView {
-            MainView()
+            GenerateQRView()
                 .tabItem {
                     Label("Generate QR", systemImage: "qrcode")
                 }

@@ -12,8 +12,8 @@ class SavedCodesViewViewModel: ObservableObject {
     }
     
     func setQRs() {
-        codes = userDefaultsManager.getSavedQRs()
-            .sorted(by: { $0.dateCreated > $1.dateCreated})
+        userDefaultsManager.setSavedQrs(for: &codes)
+        codes = codes.sorted(by: { $0.dateCreated > $1.dateCreated})
     }
     
 }

@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct MainView: View {
-    @StateObject var viewModel: MainViewModel
+struct GenerateQRView: View {
+    @StateObject var viewModel: ViewModel
     init(editingQR: QRCode? = nil) {
-        let vm = MainViewModel(editingQRCode: editingQR)
+        let vm = ViewModel(editingQRCode: editingQR)
         _viewModel = StateObject(wrappedValue: vm)
     }
     
@@ -33,13 +33,13 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        GenerateQRView()
     }
 }
 
 //MARK: ELEMENTS
 
-extension MainView {
+extension GenerateQRView {
     
     private var header: some View {
         Text("Link, email, some text")

@@ -27,7 +27,7 @@ struct QRCodeDetailView: View {
             }
         }
         .sheet(isPresented: $viewModel.isShowEditView, content: {
-            MainView(editingQR: viewModel.qrCode)
+            GenerateQRView(editingQR: viewModel.qrCode)
         })
     }
     

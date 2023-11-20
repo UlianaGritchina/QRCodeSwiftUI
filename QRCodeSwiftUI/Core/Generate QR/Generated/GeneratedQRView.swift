@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GeneratedQRView: View {
     let qrCode: QRCode?
-    @StateObject private var vm = GeneratedQRViewModel()
+    @StateObject private var vm = ViewModel()
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationView {

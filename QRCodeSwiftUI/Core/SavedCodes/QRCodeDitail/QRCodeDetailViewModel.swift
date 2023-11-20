@@ -19,7 +19,7 @@ import Foundation
     
     init(qrCode: QRCode) {
         self.qrCode = qrCode
-        savedQrs = userDefaultsManager.getSavedQRs()
+        userDefaultsManager.setSavedQrs(for: &savedQrs)
     }
     
     var brightButtonImageName: String {

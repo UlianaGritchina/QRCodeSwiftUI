@@ -19,13 +19,13 @@ final class UserDefaultsManager {
         }
     }
     
-    func getSavedQRs() -> [QRCode] {
+    func setSavedQrs(for codes: inout [QRCode]) {
         guard
             let data = UserDefaults.standard.data(forKey: codesKey),
             let savedCodes = try? JSONDecoder().decode([QRCode].self, from: data)
-        else { return [] }
+        else { return }
         
-        return savedCodes
+        codes = savedCodes
     }
     
 }
