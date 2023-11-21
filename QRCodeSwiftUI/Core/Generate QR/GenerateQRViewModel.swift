@@ -112,6 +112,12 @@ extension GenerateQRView {
             foregroundColor = .black
             backgroundColor = .white
         }
+        
+        func swapColors() {
+            let temporaryForegroundColor = foregroundColor
+            foregroundColor = backgroundColor
+            backgroundColor = temporaryForegroundColor
+        }
     }
     
 }

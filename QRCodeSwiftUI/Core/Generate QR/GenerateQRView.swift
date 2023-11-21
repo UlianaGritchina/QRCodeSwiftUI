@@ -84,6 +84,10 @@ extension GenerateQRView {
         VStack(spacing: 30) {
             ColorPicker("Color", selection: $viewModel.foregroundColor)
             ColorPicker("Background color", selection: $viewModel.backgroundColor)
+            Button(action: viewModel.swapColors()) {
+                Text("Swap colors")
+            }
+            .frame(maxWidth: .infinity)
         }
         .padding(.top)
     }
