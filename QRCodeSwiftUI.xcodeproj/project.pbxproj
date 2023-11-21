@@ -30,6 +30,7 @@
 		0EA7D51A2B0146D7005C9EC1 /* QrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7D5192B0146D7005C9EC1 /* QrView.swift */; };
 		0EB88E4E2B0524A600D44819 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB88E4D2B0524A600D44819 /* SettingsView.swift */; };
 		0EBCBDE22B03DA2C008B9C5D /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBCBDE12B03DA2C008B9C5D /* CircleButton.swift */; };
+		0EC233592B0D1A9D002F9123 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC233582B0D1A9D002F9123 /* SettingsViewModel.swift */; };
 		0ECE42022B0525DF005EB685 /* RequestReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE42012B0525DE005EB685 /* RequestReviewManager.swift */; };
 		CEC20A092B04F0C900E5113F /* QRCodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC20A082B04F0C900E5113F /* QRCodeDetailViewModel.swift */; };
 		CEE654A52B0B783C00A25EAF /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE654A42B0B783C00A25EAF /* RGBColor.swift */; };
@@ -60,6 +61,7 @@
 		0EA7D5192B0146D7005C9EC1 /* QrView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrView.swift; sourceTree = "<group>"; };
 		0EB88E4D2B0524A600D44819 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0EBCBDE12B03DA2C008B9C5D /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		0EC233582B0D1A9D002F9123 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		0ECE42012B0525DE005EB685 /* RequestReviewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestReviewManager.swift; sourceTree = "<group>"; };
 		CEC20A082B04F0C900E5113F /* QRCodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDetailViewModel.swift; sourceTree = "<group>"; };
 		CEE654A42B0B783C00A25EAF /* RGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 				0E6878E12A4A125500DC7D77 /* TabView */,
 				0E77314D28CB4F9E00B10086 /* Generate QR */,
 				0E77315528CB5B9500B10086 /* SavedCodes */,
-				0EB88E4C2B05249700D44819 /* Info */,
+				0EB88E4C2B05249700D44819 /* Settings */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -221,12 +223,13 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
-		0EB88E4C2B05249700D44819 /* Info */ = {
+		0EB88E4C2B05249700D44819 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				0EB88E4D2B0524A600D44819 /* SettingsView.swift */,
+				0EC233582B0D1A9D002F9123 /* SettingsViewModel.swift */,
 			);
-			path = Info;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +316,7 @@
 				0E5C14A828CB4AFE0021FB3E /* UIApplication+Extension.swift in Sources */,
 				0E3D0DD62B029F2B00F5A55E /* GeneratedQRViewModel.swift in Sources */,
 				0E3D0DD42B029C9400F5A55E /* UserDefaultsManager.swift in Sources */,
+				0EC233592B0D1A9D002F9123 /* SettingsViewModel.swift in Sources */,
 				0E7D54D828CCF36C00F511A4 /* QRCodeDetailView.swift in Sources */,
 				0E7D54D428CCD67800F511A4 /* SavedCodeRowView.swift in Sources */,
 				0EA7D5152B014082005C9EC1 /* BackgroundView.swift in Sources */,
