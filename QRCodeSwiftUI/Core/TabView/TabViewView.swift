@@ -17,11 +17,11 @@ struct TabViewView: View {
             
             SavedCodesView()
                 .tabItem {
-                    Label("Saved", systemImage: "bookmark")
+                    Label("Saved", systemImage: "star.square")
                 }
-            InfoView()
+            SettingsView()
                 .tabItem {
-                    Label("Info", systemImage: "info.circle")
+                    Label("Settings", systemImage: "gear")
                 }
         }
     }

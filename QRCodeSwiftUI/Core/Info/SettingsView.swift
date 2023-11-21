@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InfoView: View {
+struct SettingsView: View {
     var body: some View {
         NavigationView {
             ScrollView {
@@ -19,7 +19,7 @@ struct InfoView: View {
                     
                 })
             }
-            .navigationTitle("Info")
+            .navigationTitle("Settings")
             .padding(.horizontal)
             .background(BackgroundView())
         }
@@ -27,10 +27,10 @@ struct InfoView: View {
 }
 
 #Preview {
-    InfoView()
+    SettingsView()
 }
 
-extension InfoView {
+extension SettingsView {
     
     private var textView: some View {
         LinearGradient(colors: [.blue, .green], startPoint: .leading, endPoint: .trailing)
