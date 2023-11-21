@@ -87,7 +87,7 @@ extension GenerateQRView {
             Button(action: { viewModel.swapColors() }) {
                 Text("Swap colors")
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(.top)
     }
