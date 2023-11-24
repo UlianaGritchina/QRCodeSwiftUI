@@ -19,10 +19,10 @@ struct TabViewView: View {
                 .tabItem {
                     Label("Saved", systemImage: "star.square")
                 }
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
+//            SettingsView()
+//                .tabItem {
+//                    Label("Settings", systemImage: "gear")
+//                }
         }
     }
 }
