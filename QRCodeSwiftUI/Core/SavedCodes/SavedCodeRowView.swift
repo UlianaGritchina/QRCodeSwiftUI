@@ -53,7 +53,7 @@ extension SavedCodeRowView {
     }
     
     private var qrCodeData: some View {
-        Text(code.content)
+        Text(code.textContent)
             .font(.subheadline)
             .foregroundColor(.gray)
             .multilineTextAlignment(.leading)

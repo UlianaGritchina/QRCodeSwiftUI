@@ -14,9 +14,10 @@ struct GenerateQRView: View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 VStack {
+                    qrCodeTypePicker
                     qrTitleView
-                    header
                     textEditor
+                        .padding(.top)
                     colorPickers
                 }
                 .padding(.horizontal)
@@ -47,37 +48,42 @@ struct ContentView_Previews: PreviewProvider {
 
 extension GenerateQRView {
     
-    private var header: some View {
-        Text("Link, email, some text")
-            .font(.headline)
-            .foregroundColor(.gray)
+    @ViewBuilder private var qrCodeTypePicker: some View {
+        if !viewModel.isEditView {
+            Picker(selection: $viewModel.qrType, label: Text("Picker")) {
+                Text("Link, email, some text").tag(QRType.text)
+                Text("WI-Fi").tag(QRType.wifi)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+        }
     }
     
     @ViewBuilder private var qrTitleView: some View {
         if viewModel.isEditView {
             TextField("title", text: $viewModel.qrTitle)
-                .font(.system(
-                    size: 20,
-                    weight: .regular, design: .rounded
-                ))
-                .padding(10)
-                .background(.gray.opacity(0.2))
-                .cornerRadius(8)
-                .padding(.bottom)
-                .frame(maxWidth: 700)
-            
+                .appTextFieldStyle()
         }
     }
     
-    private var textEditor: some View {
-        TextEditor(text: $viewModel.content)
-            .frame(height: UIScreen.main.bounds.height / 4)
-            .frame(maxWidth: 700)
-            .cornerRadius(10)
-            .overlay {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(.gray.opacity(0.4), lineWidth: 0.5)
+    @ViewBuilder private var textEditor: some View {
+        if viewModel.qrType == .text {
+            TextEditor(text: $viewModel.content)
+                .frame(height: UIScreen.main.bounds.height / 4)
+                .frame(maxWidth: 700)
+                .cornerRadius(10)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.gray.opacity(0.4), lineWidth: 0.5)
+                }
+        } else {
+            VStack(spacing: 15) {
+                TextField("SSID", text: $viewModel.wifiSSID)
+                    .appTextFieldStyle()
+                TextField("Password", text: $viewModel.wifiPassword)
+                    .appTextFieldStyle()
             }
+        }
     }
     
     private var colorPickers: some View {

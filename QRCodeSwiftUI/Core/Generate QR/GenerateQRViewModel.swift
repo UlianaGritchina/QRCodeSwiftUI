@@ -3,6 +3,11 @@ import SwiftUI
 
 extension GenerateQRView {
     
+    enum QRType: String  {
+        case text = "Link, email, some text"
+        case wifi = "Wi-Fi"
+    }
+    
     @MainActor final class ViewModel: ObservableObject {
         
         //MARK: - Published
@@ -14,6 +19,9 @@ extension GenerateQRView {
         @Published var backgroundColor: Color = .white
         @Published var generatedQRCode: QRCode?
         @Published var editingQRCode: QRCode
+        @Published var qrType: QRType = .text
+        @Published var wifiSSID = ""
+        @Published var wifiPassword = ""
         
         // MARK: - Properties
         
@@ -43,8 +51,13 @@ extension GenerateQRView {
         
         private func setEditingQrCode() {
             if isEditView {
-                content = editingQRCode.content
+                content = editingQRCode.textContent
                 setColorsForEditingQRCode()
+                if let wifiSSID = editingQRCode.wifiSSID, let wifiPassword = editingQRCode.wifiPassword {
+                    qrType = .wifi
+                    self.wifiSSID = wifiSSID
+                    self.wifiPassword = wifiPassword
+                }
             }
         }
         
@@ -67,22 +80,38 @@ extension GenerateQRView {
         
         
         private func generateQRCode() {
+            let qrContent = switch qrType {
+            case .text:  content
+            case .wifi:  "WIFI:T:WPA;S:\(wifiSSID);P\(wifiPassword);;"
+            }
             if let data = qrGenerator.generateQRCode(
                 background: backgroundColor,
                 foregroundColor: foregroundColor,
-                content: content
+                content: qrContent
             ) {
-                qrCodeImageData = data
-            }
-            if let qrCodeImageData {
-                generatedQRCode = QRCode(
-                    title: "",
-                    content: content,
-                    foregroundColor: RGBColor(color: foregroundColor),
-                    backgroundColor: RGBColor(color: backgroundColor),
-                    imageData: qrCodeImageData,
-                    dateCreated: Date()
-                )
+                switch qrType {
+                case .text:
+                    generatedQRCode = QRCode(
+                        title: "",
+                        content: content,
+                        foregroundColor: RGBColor(color: foregroundColor),
+                        backgroundColor: RGBColor(color: backgroundColor),
+                        imageData: data,
+                        dateCreated: Date()
+                    )
+                case .wifi:
+                    generatedQRCode = QRCode(
+                        title: "",
+                        content: "",
+                        foregroundColor: RGBColor(color: foregroundColor),
+                        backgroundColor: RGBColor(color: backgroundColor),
+                        imageData: data,
+                        dateCreated: Date(),
+                        wifiSSID: wifiSSID,
+                        wifiPassword: wifiPassword
+                    )
+                    
+                }
             }
         }
         
@@ -92,15 +121,30 @@ extension GenerateQRView {
             generateQRCode()
             if isEditView {
                 if let generatedQRCode  {
-                    editingQRCode = QRCode(
-                        id: editingQRCode.id,
-                        title: qrTitle,
-                        content: generatedQRCode.content,
-                        foregroundColor: generatedQRCode.foregroundColor,
-                        backgroundColor: generatedQRCode.backgroundColor,
-                        imageData: generatedQRCode.imageData,
-                        dateCreated: editingQRCode.dateCreated
-                    )
+                    switch qrType {
+                    case .text:
+                        editingQRCode = QRCode(
+                            id: editingQRCode.id,
+                            title: qrTitle,
+                            content: generatedQRCode.textContent,
+                            foregroundColor: generatedQRCode.foregroundColor,
+                            backgroundColor: generatedQRCode.backgroundColor,
+                            imageData: generatedQRCode.imageData,
+                            dateCreated: editingQRCode.dateCreated
+                        )
+                    case .wifi:
+                        editingQRCode = QRCode(
+                            id: editingQRCode.id,
+                            title: qrTitle,
+                            content: "",
+                            foregroundColor: generatedQRCode.foregroundColor,
+                            backgroundColor: generatedQRCode.backgroundColor,
+                            imageData: generatedQRCode.imageData,
+                            dateCreated: editingQRCode.dateCreated,
+                            wifiSSID: wifiSSID,
+                            wifiPassword: wifiPassword
+                        )
+                    }
                 }
             } else {
                 isShowingQR = true
