@@ -68,7 +68,7 @@ extension GenerateQRView {
     
     @ViewBuilder private var textEditor: some View {
         if viewModel.qrType == .text {
-            TextEditor(text: $viewModel.content)
+            TextEditor(text: $viewModel.text)
                 .frame(height: UIScreen.main.bounds.height / 4)
                 .frame(maxWidth: 700)
                 .cornerRadius(10)

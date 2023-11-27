@@ -12,16 +12,16 @@ extension GenerateQRView {
         
         //MARK: - Published
         
-        @Published var content = ""
-        @Published var qrTitle = ""
-        @Published var isShowingQR = false
+        @Published var text = ""
+        @Published var wifiSSID = ""
+        @Published var wifiPassword = ""
         @Published var foregroundColor: Color = .black
         @Published var backgroundColor: Color = .white
+        @Published var qrTitle = ""
+        @Published var isShowingQR = false
         @Published var generatedQRCode: QRCode?
         @Published var editingQRCode: QRCode
         @Published var qrType: QRType = .text
-        @Published var wifiSSID = ""
-        @Published var wifiPassword = ""
         
         // MARK: - Properties
         
@@ -51,7 +51,7 @@ extension GenerateQRView {
         
         private func setEditingQrCode() {
             if isEditView {
-                content = editingQRCode.textContent
+                text = editingQRCode.textContent
                 setColorsForEditingQRCode()
                 if let wifiSSID = editingQRCode.wifiSSID, let wifiPassword = editingQRCode.wifiPassword {
                     qrType = .wifi
@@ -78,10 +78,9 @@ extension GenerateQRView {
             )
         }
         
-        
         private func generateQRCode() {
             let qrContent = switch qrType {
-            case .text:  content
+            case .text:  text
             case .wifi:  "WIFI:T:WPA;S:\(wifiSSID);P\(wifiPassword);;"
             }
             if let data = qrGenerator.generateQRCode(
@@ -93,7 +92,7 @@ extension GenerateQRView {
                 case .text:
                     generatedQRCode = QRCode(
                         title: "",
-                        content: content,
+                        content: text,
                         foregroundColor: RGBColor(color: foregroundColor),
                         backgroundColor: RGBColor(color: backgroundColor),
                         imageData: data,
@@ -152,7 +151,13 @@ extension GenerateQRView {
         }
         
         func rest() {
-            content = ""
+            switch qrType {
+            case .text:
+                text = ""
+            case .wifi:
+                wifiSSID = ""
+                wifiPassword = ""
+            }
             foregroundColor = .black
             backgroundColor = .white
         }
