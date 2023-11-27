@@ -47,24 +47,29 @@ struct ContentView_Previews: PreviewProvider {
 
 extension GenerateQRView {
     
-    private var qrPickerView: some View {
-        HStack {
-            Text("QR Type:")
-                .font(.system(size: 18, weight: .regular, design: .rounded))
-            Spacer()
-            qrPicker
+    @ViewBuilder private var qrPickerView: some View {
+        if !viewModel.isEditView {
+            HStack {
+                Text("QR Type:")
+                    .font(.system(size: 18, weight: .regular, design: .rounded))
+                Spacer()
+                qrPicker
+            }
+            .padding(.leading)
+            .frame(height: 48)
+            .background(Color.gray.opacity(0.25).cornerRadius(10).opacity(0.7))
+        } else {
+            Text(viewModel.qrType.rawValue)
+                .font(.headline)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.leading)
-        .frame(height: 48)
-        .background(Color.gray.opacity(0.25).cornerRadius(10).opacity(0.7))
     }
     
     @ViewBuilder private var qrPicker: some View {
-        if !viewModel.isEditView {
-            Picker(selection: $viewModel.qrType, label: Text("Picker")) {
-                ForEach(QRType.allCases, id: \.self) { type in
-                    Text(type.rawValue).tag(type)
-                }
+        Picker(selection: $viewModel.qrType, label: Text("Picker")) {
+            ForEach(QRType.allCases, id: \.self) { type in
+                Text(type.rawValue).tag(type)
             }
         }
     }

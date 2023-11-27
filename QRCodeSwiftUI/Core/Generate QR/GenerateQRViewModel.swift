@@ -102,6 +102,7 @@ extension GenerateQRView {
             for type in QRType.allCases {
                 if type.rawValue == editingQRCode.type {
                     qrType = type
+                    print(qrType)
                 }
             }
         }
