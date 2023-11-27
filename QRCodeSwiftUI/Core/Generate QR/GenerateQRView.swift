@@ -15,9 +15,8 @@ struct GenerateQRView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     qrPickerView
-                    qrTitleView
+                    qrNameView
                     textEditor
-                        .padding(.top)
                     colorPickers
                 }
                 .padding(.horizontal)
@@ -70,30 +69,42 @@ extension GenerateQRView {
         }
     }
     
-    @ViewBuilder private var qrTitleView: some View {
+    @ViewBuilder private var qrNameView: some View {
         if viewModel.isEditView {
-            TextField("title", text: $viewModel.qrTitle)
+            TextField("title", text: $viewModel.qrCodeName)
                 .appTextFieldStyle()
         }
     }
     
-    @ViewBuilder private var textEditor: some View {
-        if viewModel.qrType == .text {
-            TextEditor(text: $viewModel.text)
-                .frame(height: UIScreen.main.bounds.height / 4)
-                .frame(maxWidth: 700)
-                .cornerRadius(10)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.gray.opacity(0.4), lineWidth: 0.5)
-                }
-        } else {
-            VStack(spacing: 15) {
-                TextField("SSID", text: $viewModel.wifiSSID)
-                    .appTextFieldStyle()
-                TextField("Password", text: $viewModel.wifiPassword)
-                    .appTextFieldStyle()
+    private var textEditor: some View {
+        VStack {
+            switch viewModel.qrType {
+            case .text:
+                qrTextEditor
+            case .wifi:
+                wifiQrCodeFields
             }
+        }
+        .padding(.top)
+    }
+    
+    private var qrTextEditor: some View {
+        TextEditor(text: $viewModel.text)
+            .frame(height: UIScreen.main.bounds.height / 4)
+            .frame(maxWidth: 700)
+            .cornerRadius(10)
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.gray.opacity(0.4), lineWidth: 0.5)
+            }
+    }
+    
+    private var wifiQrCodeFields: some View {
+        VStack(spacing: 15) {
+            TextField("SSID", text: $viewModel.wifiSSID)
+                .appTextFieldStyle()
+            TextField("Password", text: $viewModel.wifiPassword)
+                .appTextFieldStyle()
         }
     }
     

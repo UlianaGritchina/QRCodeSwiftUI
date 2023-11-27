@@ -4,7 +4,7 @@ import SwiftUI
 struct QRCode: Identifiable, Codable, Equatable {
     
     var id = UUID().uuidString
-    var title: String
+    var name: String
     let textContent: String
     let foregroundColor: RGBColor
     let backgroundColor: RGBColor
@@ -27,7 +27,7 @@ struct QRCode: Identifiable, Codable, Equatable {
         wifiPassword: String? = nil
     ) {
         self.id = id
-        self.title = title
+        self.name = title
         self.textContent = content
         self.foregroundColor = foregroundColor
         self.backgroundColor = backgroundColor
@@ -39,7 +39,7 @@ struct QRCode: Identifiable, Codable, Equatable {
     }
     
     init() {
-        title = ""
+        name = ""
         textContent = ""
         foregroundColor = RGBColor(color: .black)
         backgroundColor = RGBColor(color: .white)
@@ -52,7 +52,7 @@ struct QRCode: Identifiable, Codable, Equatable {
     
     static func == (lhs: QRCode, rhs: QRCode) -> Bool {
         if lhs.id == rhs.id,
-           lhs.title == rhs.title,
+           lhs.name == rhs.name,
            lhs.textContent == rhs.textContent,
            lhs.wifiSSID == rhs.wifiSSID,
            lhs.wifiPassword == rhs.wifiPassword,

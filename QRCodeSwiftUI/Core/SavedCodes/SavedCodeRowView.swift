@@ -40,7 +40,7 @@ struct SavedCodeRowView_Previews: PreviewProvider {
 extension SavedCodeRowView {
     
     private var qrCodeName: some View {
-        Text(code.title)
+        Text(code.name)
             .font(.headline)
     }
     

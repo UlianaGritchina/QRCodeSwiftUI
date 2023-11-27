@@ -44,7 +44,7 @@ extension ShareQRButton {
                                     ?? UIImage(named: "defaultQRImage"))!),
                 preview:
                     SharePreview(
-                        "QR-code - \(qrCode.title)",
+                        "QR-code - \(qrCode.name)",
                         image:
                             Image(uiImage: (UIImage(data: qrCode.imageData)
                                             ?? UIImage(named: "defaultQRImage"))!))) {

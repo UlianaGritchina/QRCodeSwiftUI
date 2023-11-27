@@ -20,7 +20,7 @@ struct QRCodeDetailView: View {
                 buttons
             }
         }
-        .navigationTitle(viewModel.qrCode.title)
+        .navigationTitle(viewModel.qrCode.name)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 ShareQRButton(qrCode: viewModel.qrCode)

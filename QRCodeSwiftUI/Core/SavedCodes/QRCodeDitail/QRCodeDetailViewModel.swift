@@ -26,7 +26,7 @@ import Foundation
     var deleteAlertTitel: String {
         "Are you sure you want to delete QR"
         +
-        " '\(qrCode.title)'"
+        " '\(qrCode.name)'"
     }
     
     var brightButtonImageName: String {

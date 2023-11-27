@@ -75,7 +75,7 @@ extension GeneratedQRView {
     
     private func saveQR() {
         guard var qrCode else { return }
-        qrCode.title = vm.qrTitle
+        qrCode.name = vm.qrTitle
         vm.addCode(qrCode)
         dismiss()
     }
