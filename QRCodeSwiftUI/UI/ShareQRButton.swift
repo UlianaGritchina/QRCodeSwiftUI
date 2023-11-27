@@ -20,7 +20,8 @@ struct ShareButtonView_Previews: PreviewProvider {
                 foregroundColor: RGBColor(color: .black),
                 backgroundColor: RGBColor(color: .white),
                 imageData: Data(),
-                dateCreated: Date()
+                dateCreated: Date(),
+                type: "text"
             )
         )
     }

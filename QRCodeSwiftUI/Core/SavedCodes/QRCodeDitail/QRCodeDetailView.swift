@@ -53,7 +53,8 @@ struct QRCodeDetailView_Previews: PreviewProvider {
                     foregroundColor: RGBColor(color: .red),
                     backgroundColor: RGBColor(color: .green),
                     imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
-                    dateCreated: Date()
+                    dateCreated: Date(),
+                    type: "text"
                 )
             )
         }

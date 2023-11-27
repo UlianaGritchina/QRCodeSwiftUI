@@ -3,7 +3,7 @@ import SwiftUI
 
 extension GenerateQRView {
     
-    enum QRType: String  {
+    enum QRType: String, CaseIterable  {
         case text = "Link, email, some text"
         case wifi = "Wi-Fi"
     }
@@ -96,7 +96,8 @@ extension GenerateQRView {
                         foregroundColor: RGBColor(color: foregroundColor),
                         backgroundColor: RGBColor(color: backgroundColor),
                         imageData: data,
-                        dateCreated: Date()
+                        dateCreated: Date(),
+                        type: qrType.rawValue
                     )
                 case .wifi:
                     generatedQRCode = QRCode(
@@ -106,6 +107,7 @@ extension GenerateQRView {
                         backgroundColor: RGBColor(color: backgroundColor),
                         imageData: data,
                         dateCreated: Date(),
+                        type: qrType.rawValue,
                         wifiSSID: wifiSSID,
                         wifiPassword: wifiPassword
                     )
@@ -129,7 +131,8 @@ extension GenerateQRView {
                             foregroundColor: generatedQRCode.foregroundColor,
                             backgroundColor: generatedQRCode.backgroundColor,
                             imageData: generatedQRCode.imageData,
-                            dateCreated: editingQRCode.dateCreated
+                            dateCreated: editingQRCode.dateCreated,
+                            type: qrType.rawValue
                         )
                     case .wifi:
                         editingQRCode = QRCode(
@@ -140,6 +143,7 @@ extension GenerateQRView {
                             backgroundColor: generatedQRCode.backgroundColor,
                             imageData: generatedQRCode.imageData,
                             dateCreated: editingQRCode.dateCreated,
+                            type: qrType.rawValue,
                             wifiSSID: wifiSSID,
                             wifiPassword: wifiPassword
                         )

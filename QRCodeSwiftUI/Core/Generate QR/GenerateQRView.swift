@@ -14,7 +14,7 @@ struct GenerateQRView: View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 VStack {
-                    qrCodeTypePicker
+                    qrPickerView
                     qrTitleView
                     textEditor
                         .padding(.top)
@@ -48,14 +48,25 @@ struct ContentView_Previews: PreviewProvider {
 
 extension GenerateQRView {
     
-    @ViewBuilder private var qrCodeTypePicker: some View {
+    private var qrPickerView: some View {
+        HStack {
+            Text("QR Type:")
+                .font(.system(size: 18, weight: .regular, design: .rounded))
+            Spacer()
+            qrPicker
+        }
+        .padding(.leading)
+        .frame(height: 48)
+        .background(Color.gray.opacity(0.25).cornerRadius(10).opacity(0.7))
+    }
+    
+    @ViewBuilder private var qrPicker: some View {
         if !viewModel.isEditView {
             Picker(selection: $viewModel.qrType, label: Text("Picker")) {
-                Text("Link, email, some text").tag(QRType.text)
-                Text("WI-Fi").tag(QRType.wifi)
+                ForEach(QRType.allCases, id: \.self) { type in
+                    Text(type.rawValue).tag(type)
+                }
             }
-            .pickerStyle(.segmented)
-            .padding(.horizontal)
         }
     }
     

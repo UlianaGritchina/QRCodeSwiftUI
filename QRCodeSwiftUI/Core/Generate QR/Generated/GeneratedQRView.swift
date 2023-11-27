@@ -43,10 +43,11 @@ struct GeneratedQRView: View {
         qrCode: QRCode(
             title: "name",
             content: "text",
-            foregroundColor: RGBColor(color: .black), 
+            foregroundColor: RGBColor(color: .black),
             backgroundColor: RGBColor(color: .white),
             imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
-            dateCreated: Date()
+            dateCreated: Date(),
+            type: "text"
         )
     )
 }
