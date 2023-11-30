@@ -19,7 +19,7 @@ final class QRGeneratorManager {
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             guard let colorFilter = CIFilter(name: "CIFalseColor") else { return nil }
             filter.setValue(data, forKey: "inputMessage")
-            filter.setValue("H", forKey: "inputCorrectionLevel")
+           // filter.setValue("H", forKey: "inputCorrectionLevel")
             colorFilter.setValue(filter.outputImage, forKey: "inputImage")
             colorFilter.setValue(CIColor(color: backgroundColor), forKey: "inputColor1") // Background
             colorFilter.setValue(CIColor(color: foregroundColor), forKey: "inputColor0") // Foreground

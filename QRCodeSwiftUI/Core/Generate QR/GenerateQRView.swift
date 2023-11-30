@@ -68,7 +68,7 @@ extension GenerateQRView {
     
     @ViewBuilder private var qrPicker: some View {
         Picker(selection: $viewModel.qrType, label: Text("Picker")) {
-            ForEach(QRType.allCases, id: \.self) { type in
+            ForEach(QRType.allCases) { type in
                 Text(type.rawValue).tag(type)
             }
         }
@@ -88,6 +88,10 @@ extension GenerateQRView {
                 qrTextEditor
             case .wifi:
                 wifiQrCodeFields
+            case .phone:
+                phoneView
+            default:
+                Text("")
             }
         }
         .padding(.top)
@@ -111,6 +115,12 @@ extension GenerateQRView {
             TextField("Password", text: $viewModel.wifiPassword)
                 .appTextFieldStyle()
         }
+    }
+    
+    private var phoneView: some View {
+        TextField("phone number", text: $viewModel.phoneNumber)
+            .appTextFieldStyle()
+            .keyboardType(.numberPad)
     }
     
     private var colorPickers: some View {

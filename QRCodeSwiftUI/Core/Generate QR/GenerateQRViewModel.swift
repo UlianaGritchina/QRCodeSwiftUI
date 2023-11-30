@@ -3,9 +3,23 @@ import SwiftUI
 
 extension GenerateQRView {
     
-    enum QRType: String, CaseIterable  {
+    enum QRType: String, CaseIterable, Identifiable  {
+        
+        var id: String {
+            switch self {
+            case .text:
+                return "text"
+            case .wifi:
+                return "wifi"
+            default:
+                return UUID().uuidString
+            }
+        }
+
         case text = "Link, email, some text"
         case wifi = "Wi-Fi"
+        case phone = "Phone number"
+        case massage = "Massage"
     }
     
     @MainActor final class ViewModel: ObservableObject {
@@ -15,6 +29,7 @@ extension GenerateQRView {
         @Published var text = ""
         @Published var wifiSSID = ""
         @Published var wifiPassword = ""
+        @Published var phoneNumber = ""
         @Published var foregroundColor: Color = .black
         @Published var backgroundColor: Color = .white
         @Published var qrCodeName = ""
@@ -53,6 +68,9 @@ extension GenerateQRView {
             let qrContent = switch qrType {
             case .text:  text
             case .wifi:  "WIFI:T:WPA;S:\(wifiSSID);P\(wifiPassword);;"
+            case .phone: "tel:+\(phoneNumber)"
+            default:
+                ""
             }
             if let data = qrGenerator.generateQRCode(
                 background: backgroundColor,
@@ -82,7 +100,19 @@ extension GenerateQRView {
                         wifiSSID: wifiSSID,
                         wifiPassword: wifiPassword
                     )
-                    
+                case .phone:
+                    generatedQRCode = QRCode(
+                        title: "",
+                        content: "",
+                        foregroundColor: RGBColor(color: foregroundColor),
+                        backgroundColor: RGBColor(color: backgroundColor),
+                        imageData: data,
+                        dateCreated: Date(),
+                        type: qrType.rawValue,
+                        phoneNumber: phoneNumber
+                    )
+                default:
+                    break
                 }
             }
         }
@@ -114,6 +144,10 @@ extension GenerateQRView {
             case .wifi:
                 wifiSSID = wifiSSID
                 wifiPassword = wifiPassword
+            case .phone:
+                phoneNumber = editingQRCode.phoneNumber ?? ""
+            default:
+                break
             }
         }
         
@@ -165,6 +199,22 @@ extension GenerateQRView {
                             wifiSSID: wifiSSID,
                             wifiPassword: wifiPassword
                         )
+                        
+                    case .phone:
+                        editingQRCode = QRCode(
+                            id: editingQRCode.id,
+                            title: qrCodeName,
+                            content: "",
+                            foregroundColor: generatedQRCode.foregroundColor,
+                            backgroundColor: generatedQRCode.backgroundColor,
+                            imageData: generatedQRCode.imageData,
+                            dateCreated: editingQRCode.dateCreated,
+                            type: qrType.rawValue,
+                            phoneNumber: generatedQRCode.phoneNumber
+                        )
+
+                    default:
+                        break
                     }
                 }
             } else {
@@ -179,6 +229,10 @@ extension GenerateQRView {
             case .wifi:
                 wifiSSID = ""
                 wifiPassword = ""
+                
+            case .phone:
+                phoneNumber = ""
+            default: break
             }
             foregroundColor = .black
             backgroundColor = .white

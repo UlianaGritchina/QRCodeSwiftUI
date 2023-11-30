@@ -13,6 +13,7 @@ struct QRCode: Identifiable, Codable, Equatable {
     let type: String?
     let wifiSSID: String?
     let wifiPassword: String?
+    let phoneNumber: String?
     
     init(
         id: String = UUID().uuidString,
@@ -24,7 +25,8 @@ struct QRCode: Identifiable, Codable, Equatable {
         dateCreated: Date,
         type: String?,
         wifiSSID: String? = nil,
-        wifiPassword: String? = nil
+        wifiPassword: String? = nil,
+        phoneNumber: String? = nil
     ) {
         self.id = id
         self.name = title
@@ -36,6 +38,7 @@ struct QRCode: Identifiable, Codable, Equatable {
         self.type = type
         self.wifiSSID = wifiSSID
         self.wifiPassword = wifiPassword
+        self.phoneNumber = phoneNumber
     }
     
     init() {
@@ -48,6 +51,7 @@ struct QRCode: Identifiable, Codable, Equatable {
         type = "Link, email, some text"
         wifiSSID = nil
         wifiPassword = nil
+        phoneNumber = nil
     }
     
     static func == (lhs: QRCode, rhs: QRCode) -> Bool {
