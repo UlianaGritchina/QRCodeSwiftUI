@@ -68,7 +68,7 @@ extension GenerateQRView {
     
     @ViewBuilder private var qrPicker: some View {
         Picker(selection: $viewModel.qrType, label: Text("Picker")) {
-            ForEach(QRType.allCases) { type in
+            ForEach([QRType.text, QRType.wifi]) { type in
                 Text(type.rawValue).tag(type)
             }
         }
