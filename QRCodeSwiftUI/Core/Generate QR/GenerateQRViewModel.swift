@@ -141,8 +141,8 @@ extension GenerateQRView {
             case .text:
                 text = editingQRCode.textContent
             case .wifi:
-                wifiSSID = wifiSSID
-                wifiPassword = wifiPassword
+                wifiSSID = editingQRCode.wifiSSID ?? ""
+                wifiPassword = editingQRCode.wifiPassword ?? ""
             case .phone:
                 phoneNumber = editingQRCode.phoneNumber ?? ""
             default:
