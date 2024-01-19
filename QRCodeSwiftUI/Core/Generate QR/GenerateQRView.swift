@@ -58,11 +58,6 @@ extension GenerateQRView {
             .padding(.leading)
             .frame(height: 48)
             .background(Color.gray.opacity(0.25).cornerRadius(10).opacity(0.7))
-        } else {
-            Text(viewModel.qrType.rawValue)
-                .font(.headline)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
     
@@ -83,6 +78,12 @@ extension GenerateQRView {
     
     private var textEditor: some View {
         VStack {
+            if viewModel.isEditView {
+                Text(viewModel.qrType.rawValue)
+                    .font(.headline)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
             switch viewModel.qrType {
             case .text:
                 qrTextEditor
