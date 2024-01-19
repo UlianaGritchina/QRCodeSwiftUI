@@ -2,7 +2,7 @@
 
 iOS App for generating custom QR-codes. SwiftUI MVVM
 
-<img width="4218" alt="QRPreview" src="https://github.com/UlianaGritchina/QRCodeSwiftUI/assets/95241900/052f820d-cecd-4a5e-8faf-cd6e1f953d2e">
+![Group 24](https://github.com/UlianaGritchina/QRCodeSwiftUI/assets/95241900/abeb882f-b1f9-463d-bc92-b6e58ad1e82b)
 
 QR generate method:
 ```
