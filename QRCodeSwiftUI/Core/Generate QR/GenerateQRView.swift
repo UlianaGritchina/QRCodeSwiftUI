@@ -26,7 +26,7 @@ struct GenerateQRView: View {
             .background(BackgroundView())
             .overlay { generateButton }
             .toolbar {
-                restButton
+                reset
                 closeButton
                 doneButtonForToolBar
             }
@@ -162,9 +162,9 @@ extension GenerateQRView {
         }
     }
     
-    private var restButton: some ToolbarContent {
+    private var reset: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
-            Button("Rest") { viewModel.rest() }
+            Button("Reset") { viewModel.reset() }
         }
     }
     
