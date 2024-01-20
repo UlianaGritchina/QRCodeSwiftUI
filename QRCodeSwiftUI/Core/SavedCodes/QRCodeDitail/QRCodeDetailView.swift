@@ -49,7 +49,7 @@ struct QRCodeDetailView_Previews: PreviewProvider {
             QRCodeDetailView(
                 qrCode: QRCode(
                     title: "name",
-                    content: "text",
+                    content: "https://www.apple.com",
                     foregroundColor: RGBColor(color: .red),
                     backgroundColor: RGBColor(color: .green),
                     imageData: (UIImage(named: "defaultQRImage")?.pngData())!,
@@ -64,31 +64,52 @@ struct QRCodeDetailView_Previews: PreviewProvider {
 extension QRCodeDetailView {
     
     private var buttons: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: .zero) {
             deleteButton
             editButton
             brightButton
+            browserButton
         }
         .padding()
         .padding(.bottom)
     }
     
     private var deleteButton: some View {
-        CircleButton(imageName: "trash", action: viewModel.deleteButtonDidTapp)
+        Button(action: viewModel.deleteButtonDidTapp) {
+            Image(systemName: "trash")
+                .circleModifier()
+                .padding()
+        }
     }
     
     private var editButton: some View {
-        CircleButton(
-            imageName: "slider.horizontal.3",
-            action: viewModel.showEditView
-        )
+        Button(action: viewModel.showEditView) {
+            Image(systemName: "slider.horizontal.3")
+                .circleModifier()
+                .padding()
+        }
     }
     
     private var brightButton: some View {
-        CircleButton(imageName: viewModel.brightButtonImageName, action: {
+        Button(action: {
             viewModel.didTapBrightButton()
             UIScreen.main.brightness = CGFloat(viewModel.isLightOn ? 1 : 0.5)
+        }, label: {
+            Image(systemName: viewModel.brightButtonImageName)
+                .circleModifier()
+                .padding()
         })
     }
     
+    @ViewBuilder private var browserButton: some View {
+        if let url = URL(string: viewModel.qrCode.textContent) {
+            if UIApplication.shared.canOpenURL(url) {
+                Link(destination: url, label: {
+                    Image(systemName: "link")
+                        .circleModifier()
+                        .padding()
+                })
+            }
+        }
+    }
 }
