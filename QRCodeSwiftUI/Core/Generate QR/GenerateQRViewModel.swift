@@ -221,7 +221,7 @@ extension GenerateQRView {
             }
         }
         
-        func rest() {
+        func reset() {
             switch qrType {
             case .text:
                 text = ""
