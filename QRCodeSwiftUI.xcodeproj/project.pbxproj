@@ -491,7 +491,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "ugritchina-icloud.com.QRCodeSwiftUI";
 				PRODUCT_NAME = "QR Generator";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -528,7 +528,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "ugritchina-icloud.com.QRCodeSwiftUI";
 				PRODUCT_NAME = "QR Generator";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

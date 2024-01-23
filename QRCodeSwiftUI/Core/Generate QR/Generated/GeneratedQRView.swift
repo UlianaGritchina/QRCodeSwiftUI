@@ -68,7 +68,7 @@ extension GeneratedQRView {
             Spacer()
             ButtonView(title: "Save", action: { vm.showAlert() })
                 .padding()
-                .padding(.bottom, 50)
+                .padding(.bottom, UIScreen.main.bounds.height / 49)
         }
         .ignoresSafeArea()
     }
