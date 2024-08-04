@@ -149,9 +149,10 @@ extension GenerateQRView {
                     }
                 }
             )
-            .padding()
+            .padding(.vertical, 8)
+            .padding(.horizontal)
             .padding(.bottom, viewModel.isEditView
-                     ? UIScreen.main.bounds.height / 49
+                     ? UIScreen.main.bounds.height / 47
                      : UIScreen.main.bounds.height / 10
             )
             .background(.ultraThinMaterial)
