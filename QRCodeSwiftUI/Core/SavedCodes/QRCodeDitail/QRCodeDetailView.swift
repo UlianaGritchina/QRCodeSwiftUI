@@ -4,7 +4,6 @@ import SwiftUI
 struct QRCodeDetailView: View {
     @ObservedObject private var viewModel: QRCodeDetailViewModel
     @Environment(\.dismiss) private var dismiss
-    @State private var currentBrightness = UIScreen.main.brightness
     init(qrCode: QRCode) {
         viewModel = QRCodeDetailViewModel(qrCode: qrCode)
     }
@@ -93,10 +92,7 @@ extension QRCodeDetailView {
     private var brightButton: some View {
         Button(action: {
             viewModel.didTapBrightButton()
-            UIScreen.main.brightness = CGFloat(viewModel.isLightOn ? 1 : currentBrightness)
-            if viewModel.isLightOn {
-                currentBrightness = UIScreen.main.brightness
-            }
+            UIScreen.main.brightness = CGFloat(viewModel.isLightOn ? 1 : 0.5)
         }, label: {
             Image(systemName: viewModel.brightButtonImageName)
                 .circleModifier()
