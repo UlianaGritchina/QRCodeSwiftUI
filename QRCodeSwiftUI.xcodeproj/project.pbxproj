@@ -33,6 +33,7 @@
 		0EB88E4E2B0524A600D44819 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB88E4D2B0524A600D44819 /* SettingsView.swift */; };
 		0EC233592B0D1A9D002F9123 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC233582B0D1A9D002F9123 /* SettingsViewModel.swift */; };
 		0ECE42022B0525DF005EB685 /* RequestReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE42012B0525DE005EB685 /* RequestReviewManager.swift */; };
+		0EF94FEC2D4FA7A5003FA0CC /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF94FEB2D4FA7A5003FA0CC /* PhotoPickerView.swift */; };
 		CEC20A092B04F0C900E5113F /* QRCodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC20A082B04F0C900E5113F /* QRCodeDetailViewModel.swift */; };
 		CEE654A52B0B783C00A25EAF /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE654A42B0B783C00A25EAF /* RGBColor.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		0EB88E4D2B0524A600D44819 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0EC233582B0D1A9D002F9123 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		0ECE42012B0525DE005EB685 /* RequestReviewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestReviewManager.swift; sourceTree = "<group>"; };
+		0EF94FEB2D4FA7A5003FA0CC /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		CEC20A082B04F0C900E5113F /* QRCodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDetailViewModel.swift; sourceTree = "<group>"; };
 		CEE654A42B0B783C00A25EAF /* RGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,16 +169,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		0E82A0CF28CDD7A200AB1AE3 /* UI */ = {
+		0E82A0CF28CDD7A200AB1AE3 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				0EF94FEB2D4FA7A5003FA0CC /* PhotoPickerView.swift */,
 				0E3E3F852B10F829006DEF43 /* ViewModifires */,
 				0EA7D5142B014082005C9EC1 /* BackgroundView.swift */,
 				0E7F4D9B2945ECFF000EFB14 /* ButtonView.swift */,
 				0E3023EC28CF51A300037184 /* ShareQRButton.swift */,
 				0EA7D5192B0146D7005C9EC1 /* QrView.swift */,
 			);
-			path = UI;
+			path = DesignSystem;
 			sourceTree = "<group>";
 		};
 		0E8732E228C8AE2C00645115 = {
@@ -201,7 +204,7 @@
 				0E6878E32A4A15A900DC7D77 /* SupportingFiles */,
 				0EA7D5112B013AC8005C9EC1 /* Managers */,
 				0E7D54D028CCB5DA00F511A4 /* Models */,
-				0E82A0CF28CDD7A200AB1AE3 /* UI */,
+				0E82A0CF28CDD7A200AB1AE3 /* DesignSystem */,
 				0E6878E22A4A159000DC7D77 /* Core */,
 			);
 			path = QRCodeSwiftUI;
@@ -339,6 +342,7 @@
 				0E7D54D228CCB5F200F511A4 /* QRCode.swift in Sources */,
 				0E7D54D628CCF32400F511A4 /* SavedCodesViewModel.swift in Sources */,
 				CEC20A092B04F0C900E5113F /* QRCodeDetailViewModel.swift in Sources */,
+				0EF94FEC2D4FA7A5003FA0CC /* PhotoPickerView.swift in Sources */,
 				0E77315428CB5B9200B10086 /* SavedCodesView.swift in Sources */,
 				0E7F4D9A2945E600000EFB14 /* Color + Extension.swift in Sources */,
 				0EA7D5132B013AD6005C9EC1 /* QRGeneratorManager.swift in Sources */,
@@ -486,12 +490,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_WKWatchOnly = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "ugritchina-icloud.com.QRCodeSwiftUI";
 				PRODUCT_NAME = "QR Generator";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -523,12 +527,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_WKWatchOnly = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "ugritchina-icloud.com.QRCodeSwiftUI";
 				PRODUCT_NAME = "QR Generator";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

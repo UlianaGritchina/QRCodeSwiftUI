@@ -4,6 +4,9 @@ struct GenerateQRView: View {
     @StateObject var viewModel: ViewModel
     @Binding var editingQR: QRCode
     @Environment(\.dismiss) private var dismiss
+    
+    @StateObject private var photoPickerViewModel = PhotoPickerViewModel()
+    
     init(editingQR: Binding<QRCode>, isEditingView: Bool = false) {
         let vm = ViewModel(editingQRCode: editingQR.wrappedValue, isEditView: isEditingView)
         _viewModel = StateObject(wrappedValue: vm)
@@ -13,18 +16,34 @@ struct GenerateQRView: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                VStack {
-                    qrPickerView
+                VStack(spacing: 20) {
                     qrNameView
                     textEditor
-                    colorPickers
+                    qrForeground
+                    Divider()
+                    qrBackground
+                    if viewModel.isFirstEnter {
+                        Text("Control the transparency of the color to adjust the background")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+                    Divider()
+                    qrLogo
+                    
                 }
                 .padding(.horizontal)
-                .padding(.top, 5)
             }
             .navigationTitle(viewModel.navigationTitle)
             .background(BackgroundView())
             .overlay { generateButton }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                    withAnimation {
+                        viewModel.isFirstEnter = false
+                    }
+                }
+            }
             .toolbar {
                 reset
                 closeButton
@@ -33,6 +52,16 @@ struct GenerateQRView: View {
             .sheet(isPresented: $viewModel.isShowingQR, content: {
                 GeneratedQRView(qrCode: viewModel.generatedQRCode)
             })
+            .sheet(isPresented: $viewModel.isShowPhotoPicker, onDismiss:  {
+                if viewModel.qrImageType == .background {
+                    viewModel.backgroundImageData = photoPickerViewModel.imageData
+                } else {
+                    viewModel.logoImageData = photoPickerViewModel.imageData
+                }
+            }) {
+                PhotoPickerView(vm: photoPickerViewModel)
+                    .ignoresSafeArea(edges: .bottom)
+            }
         }
     }
 }
@@ -98,9 +127,97 @@ extension GenerateQRView {
         .padding(.top)
     }
     
+    private var qrForeground: some View {
+        ColorPicker("Foreground", selection: $viewModel.foregroundColor)
+            .font(.headline)
+    }
+    
+    private var qrBackground: some View {
+        HStack {
+            ColorPicker("Background", selection: $viewModel.backgroundColor)
+                .font(.headline)
+            
+            VStack {
+                if let imageData = viewModel.backgroundImageData,
+                   let uiImage = UIImage(data: imageData){
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .frame(width: 55, height: 55)
+                        .scaledToFit()
+                        .cornerRadius(10)
+                    
+                } else {
+                    Rectangle()
+                        .frame(width: 55, height: 55)
+                        .cornerRadius(10)
+                        .foregroundStyle(.secondary.opacity(0.3))
+                        .overlay {
+                            Image(systemName: "photo")
+                                .foregroundStyle(.gray)
+                        }
+                }
+            }
+            .padding(.leading, 30)
+            .onTapGesture {
+                viewModel.qrImageType = .background
+                viewModel.isShowPhotoPicker = true
+            }
+            if viewModel.backgroundImageData  != nil {
+                Button(action: {
+                    viewModel.backgroundImageData = nil
+                }) {
+                    Image(systemName: "trash")
+                        .foregroundStyle(.red)
+                }
+            }
+            
+        }
+    }
+    
+    private var qrLogo: some View {
+        HStack {
+            Text("Logo")
+                .font(.headline)
+            Spacer()
+            VStack {
+                if let imageData = viewModel.logoImageData,
+                   let uiImage = UIImage(data: imageData){
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .frame(width: 55, height: 55)
+                        .scaledToFit()
+                        .cornerRadius(10)
+                    
+                } else {
+                    Rectangle()
+                        .frame(width: 55, height: 55)
+                        .cornerRadius(10)
+                        .foregroundStyle(.secondary.opacity(0.3))
+                        .overlay {
+                            Image(systemName: "photo")
+                                .foregroundStyle(.gray)
+                        }
+                }
+            }
+            .padding(.leading, 30)
+            .onTapGesture {
+                viewModel.qrImageType = .logo
+                viewModel.isShowPhotoPicker = true
+            }
+            if viewModel.logoImageData != nil {
+                Button(action: {
+                    viewModel.logoImageData = nil
+                }) {
+                    Image(systemName: "trash")
+                        .foregroundStyle(.red)
+                }
+            }
+        }
+    }
+    
     private var qrTextEditor: some View {
         TextEditor(text: $viewModel.text)
-            .frame(height: UIScreen.main.bounds.height / 4)
+            .frame(height: UIScreen.main.bounds.height / 5.5)
             .frame(maxWidth: 700)
             .cornerRadius(10)
             .overlay {
@@ -175,10 +292,13 @@ extension GenerateQRView {
     
     private var closeButton: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
-            Button(action: { dismiss() }) {
-                Image(systemName: "xmark")
+            if viewModel.isEditView {
+                Button(action: { dismiss() }) {
+                    Image(systemName: "xmark")
+                }
+            } else {
+                qrPicker
             }
-            .opacity(viewModel.isEditView ? 1 : 0)
         }
     }
 }

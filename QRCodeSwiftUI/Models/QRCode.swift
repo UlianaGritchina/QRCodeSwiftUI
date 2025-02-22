@@ -10,6 +10,8 @@ struct QRCode: Identifiable, Codable, Equatable {
     let backgroundColor: RGBColor
     let imageData: Data
     let dateCreated: Date
+    let backgroundImageData: Data?
+    let logoImageData: Data?
     let type: String?
     let wifiSSID: String?
     let wifiPassword: String?
@@ -23,6 +25,8 @@ struct QRCode: Identifiable, Codable, Equatable {
         backgroundColor: RGBColor,
         imageData: Data,
         dateCreated: Date,
+        backgroundImageData: Data? = nil,
+        logoImageData: Data? = nil,
         type: String?,
         wifiSSID: String? = nil,
         wifiPassword: String? = nil,
@@ -36,6 +40,8 @@ struct QRCode: Identifiable, Codable, Equatable {
         self.imageData = imageData
         self.dateCreated = dateCreated
         self.type = type
+        self.backgroundImageData = backgroundImageData
+        self.logoImageData = logoImageData
         self.wifiSSID = wifiSSID
         self.wifiPassword = wifiPassword
         self.phoneNumber = phoneNumber
@@ -49,6 +55,8 @@ struct QRCode: Identifiable, Codable, Equatable {
         imageData = Data()
         dateCreated = Date()
         type = "Link, email, some text"
+        backgroundImageData = nil
+        logoImageData = nil
         wifiSSID = nil
         wifiPassword = nil
         phoneNumber = nil
@@ -67,5 +75,4 @@ struct QRCode: Identifiable, Codable, Equatable {
             return false
         }
     }
-    
 }

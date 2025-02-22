@@ -1,6 +1,12 @@
 
 import SwiftUI
 
+
+enum QRImageType {
+    case background
+    case logo
+}
+
 extension GenerateQRView {
     
     enum QRType: String, CaseIterable, Identifiable  {
@@ -32,11 +38,17 @@ extension GenerateQRView {
         @Published var phoneNumber = ""
         @Published var foregroundColor: Color = .black
         @Published var backgroundColor: Color = .white
+        @Published var backgroundImageData: Data?
+        @Published var logoImageData: Data?
         @Published var qrCodeName = ""
         @Published var isShowingQR = false
+        @Published var isShowPhotoPicker = false
         @Published var generatedQRCode: QRCode?
         @Published var editingQRCode: QRCode
         @Published var qrType: QRType = .text
+        @Published var qrImageType: QRImageType = .background
+        
+        @AppStorage("isFirstEnter") var isFirstEnter: Bool = true
         
         // MARK: - Properties
         
@@ -72,10 +84,16 @@ extension GenerateQRView {
             default:
                 ""
             }
+            
+            let logoImage = UIImage(data: logoImageData ?? Data())
+            let background = UIImage(data: backgroundImageData ?? Data())
+            
             if let data = qrGenerator.generateQRCode(
                 background: backgroundColor,
                 foregroundColor: foregroundColor,
-                content: qrContent
+                content: qrContent,
+                overlayImage: logoImage,
+                backgroundImage: background
             ) {
                 switch qrType {
                 case .text:
@@ -86,6 +104,8 @@ extension GenerateQRView {
                         backgroundColor: RGBColor(color: backgroundColor),
                         imageData: data,
                         dateCreated: Date(),
+                        backgroundImageData: backgroundImageData,
+                        logoImageData: logoImageData,
                         type: qrType.rawValue
                     )
                 case .wifi:
@@ -96,6 +116,8 @@ extension GenerateQRView {
                         backgroundColor: RGBColor(color: backgroundColor),
                         imageData: data,
                         dateCreated: Date(),
+                        backgroundImageData: backgroundImageData,
+                        logoImageData: logoImageData,
                         type: qrType.rawValue,
                         wifiSSID: wifiSSID,
                         wifiPassword: wifiPassword
@@ -108,6 +130,8 @@ extension GenerateQRView {
                         backgroundColor: RGBColor(color: backgroundColor),
                         imageData: data,
                         dateCreated: Date(),
+                        backgroundImageData: backgroundImageData,
+                        logoImageData: logoImageData,
                         type: qrType.rawValue,
                         phoneNumber: phoneNumber
                     )
@@ -125,6 +149,8 @@ extension GenerateQRView {
                 setColorsForEditingQRCode()
                 getEditingQRType()
                 setEditingQRCodeContent()
+                backgroundImageData = editingQRCode.backgroundImageData
+                logoImageData = editingQRCode.logoImageData
             }
         }
         
@@ -183,6 +209,8 @@ extension GenerateQRView {
                             backgroundColor: generatedQRCode.backgroundColor,
                             imageData: generatedQRCode.imageData,
                             dateCreated: editingQRCode.dateCreated,
+                            backgroundImageData: generatedQRCode.backgroundImageData,
+                            logoImageData: generatedQRCode.logoImageData,
                             type: qrType.rawValue
                         )
                     case .wifi:
@@ -194,6 +222,8 @@ extension GenerateQRView {
                             backgroundColor: generatedQRCode.backgroundColor,
                             imageData: generatedQRCode.imageData,
                             dateCreated: editingQRCode.dateCreated,
+                            backgroundImageData: generatedQRCode.backgroundImageData,
+                            logoImageData: generatedQRCode.logoImageData,
                             type: qrType.rawValue,
                             wifiSSID: wifiSSID,
                             wifiPassword: wifiPassword
@@ -208,6 +238,8 @@ extension GenerateQRView {
                             backgroundColor: generatedQRCode.backgroundColor,
                             imageData: generatedQRCode.imageData,
                             dateCreated: editingQRCode.dateCreated,
+                            backgroundImageData: generatedQRCode.backgroundImageData,
+                            logoImageData: generatedQRCode.logoImageData,
                             type: qrType.rawValue,
                             phoneNumber: generatedQRCode.phoneNumber
                         )
@@ -235,6 +267,8 @@ extension GenerateQRView {
             }
             foregroundColor = .black
             backgroundColor = .white
+            backgroundImageData = nil
+            logoImageData = nil
         }
         
         func swapColors() {

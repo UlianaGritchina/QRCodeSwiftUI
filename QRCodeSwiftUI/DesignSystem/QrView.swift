@@ -1,3 +1,4 @@
+
 import SwiftUI
 
 struct QrView: View {
@@ -17,11 +18,5 @@ struct QrView: View {
             .frame(maxWidth: size, maxHeight: size)
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .shadow(radius: 5)
-    }
-}
-
-struct QrView_Previews: PreviewProvider {
-    static var previews: some View {
-        QrView(data: UIImage(named: "defaultQRImage")?.pngData() ?? Data())
     }
 }
